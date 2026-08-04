@@ -1,0 +1,83 @@
+/* Shared design tokens & utility animations */
+
+:root {
+  --background: #f4f6f8;
+  --foreground: #0b1220;
+  --muted: #5b6577;
+  --border: rgba(11, 18, 32, 0.1);
+  --accent: #0f766e;
+  --accent-soft: #14b8a6;
+  --accent-foreground: #ffffff;
+  --surface: rgba(255, 255, 255, 0.62);
+  --surface-strong: rgba(255, 255, 255, 0.82);
+  --ink: #0b1220;
+  --ink-soft: #1a2436;
+
+  --font-display: var(--font-syne), var(--font-figtree), system-ui, sans-serif;
+  --font-body: var(--font-figtree), system-ui, sans-serif;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.25rem;
+
+  --container-max: 72rem;
+  --header-height: 4.75rem;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(2%, -3%, 0) scale(1.04);
+  }
+}
+
+@keyframes scroll-pulse {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.35;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease both;
+}
+
+.animate-fade-up {
+  animation: fade-up 0.6s ease both;
+}
+
+.animate-float-slow {
+  animation: float-slow 14s ease-in-out infinite;
+}
+
+.animate-scroll-pulse {
+  animation: scroll-pulse 1.8s ease-in-out infinite;
+}
