@@ -16,6 +16,7 @@ export const services: Service[] = [
       "Ongoing maintenance",
     ],
     icon: "code-2",
+    image: "/services/website development.jpg",
   },
   {
     slug: "digital-marketing",
@@ -32,6 +33,7 @@ export const services: Service[] = [
       "Growth experimentation",
     ],
     icon: "megaphone",
+    image: "/services/digital_marketeing.png",
   },
   {
     slug: "seo",
@@ -48,6 +50,7 @@ export const services: Service[] = [
       "Rank tracking & reporting",
     ],
     icon: "search",
+    image: "/services/seo.png",
   },
   {
     slug: "meta-ads",
@@ -64,6 +67,7 @@ export const services: Service[] = [
       "Conversion tracking",
     ],
     icon: "target",
+    image: "/services/branding.png",
   },
 ];
 
