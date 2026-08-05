@@ -11,6 +11,7 @@ export type Service = {
   description: string;
   features: string[];
   icon: string;
+  image: string; // <-- Added this line
 };
 
 export type NavItem = {
@@ -57,4 +58,6 @@ export type ApiErrorResponse = {
   issues?: Record<string, string[]>;
 };
 
-export type ApiResponse<T = undefined> = ApiSuccessResponse<T> | ApiErrorResponse;
+export type ApiResponse<T = undefined> =
+  | ApiSuccessResponse<T>
+  | ApiErrorResponse;
