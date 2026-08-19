@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Figtree, Geist_Mono, Syne } from "next/font/google";
 import { siteConfig } from "@/constants/site";
+import IntroAnimation from "@/components/IntroAnimation";
 import "./globals.css";
 
 const syne = Syne({
@@ -23,11 +24,14 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
+
   title: {
     default: `${siteConfig.name} | Digital Agency`,
     template: `%s | ${siteConfig.name}`,
   },
+
   description: siteConfig.description,
+
   openGraph: {
     title: siteConfig.name,
     description: siteConfig.description,
@@ -36,6 +40,7 @@ export const metadata: Metadata = {
     locale: siteConfig.locale,
     type: "website",
   },
+
   twitter: {
     card: "summary_large_image",
     title: siteConfig.name,
@@ -43,13 +48,21 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html
       lang="en"
       className={`${syne.variable} ${figtree.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-sans">{children}</body>
+      <body className="min-h-full flex flex-col font-sans">
+        <IntroAnimation />
+
+        {children}
+      </body>
     </html>
   );
 }

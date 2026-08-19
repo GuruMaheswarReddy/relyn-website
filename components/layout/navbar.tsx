@@ -18,6 +18,7 @@ export function Navbar() {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
+
     return () => {
       document.body.style.overflow = "";
     };
@@ -25,31 +26,41 @@ export function Navbar() {
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpen(false);
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
     };
+
     window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+    };
   }, []);
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
+
+      {/* Skip to content */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-none focus:bg-[#0038A8] focus:px-4 focus:py-2 focus:text-sm focus:text-white"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-[#064E3B] focus:px-4 focus:py-2 focus:text-sm focus:text-white"
       >
         Skip to content
       </a>
 
+      {/* Navbar */}
       <div
         className={cn(
           "w-full transition-all duration-300 ease-out",
           scrolled
-            ? "border-b border-slate-200/80 bg-white shadow-sm"
+            ? "border-b border-[#064E3B]/10 bg-white shadow-sm"
             : "border-b border-transparent bg-transparent"
         )}
       >
-        <Container className="flex h-20 items-center justify-between gap-6 max-w-[1400px]">
-          {/* Logo */}
+        <Container className="flex h-20 max-w-[1400px] items-center justify-between gap-6">
+
+          {/* Relyn Logo */}
           <Logo
             tone={scrolled ? "light" : "dark"}
             className={cn(
@@ -58,7 +69,7 @@ export function Navbar() {
             )}
           />
 
-          {/* Nav Items - CYBRISK Font & Size */}
+          {/* Desktop Navigation */}
           <nav
             aria-label="Primary"
             className="hidden items-center gap-8 md:flex"
@@ -68,10 +79,10 @@ export function Navbar() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "text-[12px] font-bold tracking-[0.18em] uppercase transition-colors duration-200",
+                  "text-[12px] font-bold uppercase tracking-[0.18em] transition-colors duration-200",
                   scrolled
-                    ? "text-[#0F172A] hover:text-[#FF6600]"
-                    : "text-white hover:text-[#FF6600]"
+                    ? "text-[#064E3B] hover:text-[#0F7A5C]"
+                    : "text-white hover:text-[#9FCDBE]"
                 )}
               >
                 {item.label}
@@ -79,28 +90,28 @@ export function Navbar() {
             ))}
           </nav>
 
-          {/* CTA Button - Exact CYBRISK Style */}
+          {/* Book a Service Button */}
           <div className="hidden items-center gap-3 md:flex">
             <ButtonLink
               href="/contact"
               className={cn(
-                "h-11 px-7 rounded-none text-[12px] font-bold tracking-[0.18em] uppercase transition-all duration-300",
+                "h-11 rounded-full px-7 text-[12px] font-bold uppercase tracking-[0.15em] transition-all duration-300",
                 scrolled
-                  ? "bg-[#FF6600] text-white hover:bg-[#0038A8] border border-[#FF6600]"
-                  : "bg-white text-[#0F172A] border border-white hover:bg-[#FF6600] hover:border-[#FF6600] hover:text-white"
+                  ? "border border-[#064E3B] bg-[#064E3B] text-white hover:bg-[#0F7A5C]"
+                  : "border border-white bg-white text-[#064E3B] hover:border-[#064E3B] hover:bg-[#064E3B] hover:text-white"
               )}
             >
-              START A PROJECT
+              BOOK A SERVICE
             </ButtonLink>
           </div>
 
-          {/* Mobile Menu Toggle */}
+          {/* Mobile Menu Button */}
           <button
             type="button"
             className={cn(
-              "inline-flex h-10 w-10 items-center justify-center rounded-none border transition-colors duration-200 md:hidden",
+              "inline-flex h-10 w-10 items-center justify-center rounded-full border transition-colors duration-200 md:hidden",
               scrolled
-                ? "border-slate-300 bg-white text-[#0F172A]"
+                ? "border-[#064E3B]/20 bg-white text-[#064E3B]"
                 : "border-white/30 bg-white/10 text-white backdrop-blur-md"
             )}
             aria-expanded={open}
@@ -108,7 +119,11 @@ export function Navbar() {
             aria-label={open ? "Close menu" : "Open menu"}
             onClick={() => setOpen((value) => !value)}
           >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {open ? (
+              <X className="h-5 w-5" />
+            ) : (
+              <Menu className="h-5 w-5" />
+            )}
           </button>
         </Container>
       </div>
@@ -126,32 +141,46 @@ export function Navbar() {
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-40 md:hidden"
           >
+            {/* Overlay */}
             <button
               type="button"
               aria-label="Close menu overlay"
-              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+              className="absolute inset-0 bg-black/50 backdrop-blur-sm"
               onClick={() => setOpen(false)}
             />
 
+            {/* Menu */}
             <motion.nav
               initial={{ y: -16, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -12, opacity: 0 }}
-              transition={{ duration: 0.25, ease: "easeOut" }}
-              className="absolute inset-x-0 top-20 border-b border-slate-200 bg-white p-6 shadow-xl"
+              transition={{
+                duration: 0.25,
+                ease: "easeOut",
+              }}
+              className="absolute inset-x-0 top-20 border-b border-[#064E3B]/10 bg-white p-6 shadow-xl"
               aria-label="Mobile"
             >
               <ul className="flex flex-col gap-3">
                 {mainNav.map((item, index) => (
                   <motion.li
                     key={item.href}
-                    initial={{ opacity: 0, x: -8 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.03 * index, duration: 0.2 }}
+                    initial={{
+                      opacity: 0,
+                      x: -8,
+                    }}
+                    animate={{
+                      opacity: 1,
+                      x: 0,
+                    }}
+                    transition={{
+                      delay: 0.03 * index,
+                      duration: 0.2,
+                    }}
                   >
                     <Link
                       href={item.href}
-                      className="block py-2 text-[13px] font-bold tracking-[0.18em] uppercase text-[#0F172A] hover:text-[#FF6600]"
+                      className="block py-2 text-[13px] font-bold uppercase tracking-[0.18em] text-[#064E3B] transition-colors hover:text-[#0F7A5C]"
                       onClick={() => setOpen(false)}
                     >
                       {item.label}
@@ -159,12 +188,14 @@ export function Navbar() {
                   </motion.li>
                 ))}
               </ul>
-              <div className="mt-6 border-t border-slate-100 pt-6">
+
+              {/* Mobile CTA */}
+              <div className="mt-6 border-t border-[#064E3B]/10 pt-6">
                 <ButtonLink
                   href="/contact"
-                  className="w-full h-11 justify-center rounded-none bg-[#FF6600] text-white text-[12px] font-bold tracking-[0.18em] uppercase hover:bg-[#0038A8]"
+                  className="h-11 w-full justify-center rounded-full bg-[#064E3B] text-[12px] font-bold uppercase tracking-[0.15em] text-white transition-all hover:bg-[#0F7A5C]"
                 >
-                  START A PROJECT
+                  BOOK A SERVICE
                 </ButtonLink>
               </div>
             </motion.nav>

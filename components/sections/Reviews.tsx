@@ -1,107 +1,83 @@
 "use client";
 
-const reviews = [
+import { Star } from "lucide-react";
+
+interface Review {
+  name: string;
+  service: string;
+  location?: string;
+  review: string;
+}
+
+const reviews: Review[] = [
   {
-    name: "Arjun Mehta",
-    company: "Founder, Mehta Enterprises",
-    tag: "Website Development",
+    name: "Ananya",
+    service: "Housekeeping",
+    location: "Bengaluru",
     review:
-      "The team completely transformed our website. The new design is modern, fast, responsive and much easier for our customers to use.",
+      "The housekeeping service has made our daily routine so much easier. The professional was punctual, polite and did an excellent job.",
   },
   {
-    name: "Priya Sharma",
-    company: "Marketing Manager",
-    tag: "SEO",
+    name: "Rahul",
+    service: "Cooking",
+    location: "Bengaluru",
     review:
-      "Our search visibility improved significantly after working with the team. We are now getting better organic traffic and quality enquiries.",
+      "We needed regular cooking support at home and Relyn made the process very simple. The service has been reliable and convenient.",
   },
   {
-    name: "Rahul Verma",
-    company: "Founder, RV Solutions",
-    tag: "Digital Marketing",
+    name: "Priya",
+    service: "Child Care",
+    location: "Bengaluru",
     review:
-      "Their digital marketing strategy helped us reach the right audience and generate more qualified leads for our business.",
+      "Finding dependable child care was important for our family. Relyn connected us with someone caring, responsible and trustworthy.",
   },
   {
-    name: "Sneha Reddy",
-    company: "E-commerce Business Owner",
-    tag: "Shopify Development",
+    name: "Karthik",
+    service: "Elder Care",
+    location: "Bengaluru",
     review:
-      "They built a clean and professional Shopify store for our brand. The website is fast, mobile-friendly and easy for our team to manage.",
+      "The elder care support has given our family great peace of mind. The caregiver is kind, attentive and dependable.",
   },
   {
-    name: "Karthik Rao",
-    company: "Director, KR Technologies",
-    tag: "UI/UX Design",
+    name: "Sneha",
+    service: "Housekeeping",
+    location: "Bengaluru",
     review:
-      "The UI/UX work exceeded our expectations. Every screen feels clean, intuitive and consistent with our brand identity.",
+      "The service quality has been excellent. Everything from booking to the actual service was smooth and professional.",
   },
   {
-    name: "Ananya Patel",
-    company: "Founder, Urban Living",
-    tag: "E-commerce",
+    name: "Vikram",
+    service: "Home Support",
+    location: "Bengaluru",
     review:
-      "From design to development, the entire process was smooth. Our new e-commerce website looks premium and performs extremely well.",
-  },
-  {
-    name: "Vikram Singh",
-    company: "Business Owner",
-    tag: "Web Development",
-    review:
-      "Excellent communication and technical execution. They understood our requirements and delivered a professional website on time.",
-  },
-  {
-    name: "Neha Gupta",
-    company: "Marketing Head",
-    tag: "SEO & Marketing",
-    review:
-      "The combination of SEO and digital marketing has helped our business improve online visibility and generate consistent enquiries.",
+      "Relyn has made it much easier to manage everyday tasks at home. The service is convenient, professional and reliable.",
   },
 ];
 
-function ReviewCard({
-  review,
-}: {
-  review: (typeof reviews)[number];
-}) {
+function ReviewCard({ review }: { review: Review }) {
   return (
-    <div className="w-[360px] md:w-[420px] shrink-0 rounded-2xl border border-slate-200 bg-white p-7 shadow-sm">
-
-      {/* Client + Service */}
-      <div className="flex items-start justify-between gap-4">
+    <div className="w-[310px] shrink-0 rounded-2xl border border-[#dcebd8] bg-white p-6 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-[#064e3b]/30 hover:shadow-md md:w-[380px]">
+      <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-
-          {/* Avatar */}
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#0038A8] text-sm font-semibold text-white">
-            {review.name
-              .split(" ")
-              .map((word) => word[0])
-              .join("")}
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#DBF5D6] text-base font-bold text-[#064e3b] ring-2 ring-white">
+            {review.name.charAt(0)}
           </div>
-
           <div>
-            <h3 className="font-semibold text-slate-900">
+            <h3 className="font-[var(--font-figtree)] text-sm font-bold text-[#064e3b]">
               {review.name}
             </h3>
-
-            <p className="mt-0.5 text-xs text-slate-500">
-              {review.company}
+            <p className="text-xs text-[#71806f]">
+              {review.service} {review.location && `• ${review.location}`}
             </p>
           </div>
         </div>
-
-        <span className="whitespace-nowrap rounded-full border border-[#0038A8]/20 bg-[#0038A8]/5 px-3 py-1 text-xs font-medium text-[#0038A8]">
-          {review.tag}
-        </span>
+        <div className="flex gap-0.5 text-[#e85d04]">
+          {[...Array(5)].map((_, i) => (
+            <Star key={i} size={14} className="fill-[#e85d04] text-[#e85d04]" />
+          ))}
+        </div>
       </div>
-
-      {/* Stars */}
-      <div className="mt-6 flex gap-1 text-lg text-[#FF6600]">
-        ★★★★★
-      </div>
-
-      {/* Review */}
-      <p className="mt-4 text-[15px] leading-7 text-slate-600">
+      <p className="mt-4 text-xs leading-relaxed text-[#59655a] sm:text-sm">
         &quot;{review.review}&quot;
       </p>
     </div>
@@ -113,148 +89,89 @@ export default function Reviews() {
   const rowTwo = [...reviews.slice().reverse(), ...reviews.slice().reverse()];
 
   return (
-    <section className="overflow-hidden bg-white py-24">
-
-      {/* Heading */}
+    <section className="relative overflow-hidden bg-[#F7F0D4] py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-6 text-center">
-
-        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#FF6600]">
-          Client Stories
-        </p>
-
-        <h2 className="mt-5 text-4xl font-semibold tracking-tight text-slate-900 md:text-6xl">
-          Trusted by businesses that
-          <span className="text-[#0038A8]"> grow with us</span>
+        <span className="inline-block rounded-full bg-[#064e3b]/10 px-3.5 py-1 text-xs font-bold uppercase tracking-[0.25em] text-[#e85d04]">
+          Family Stories
+        </span>
+        <h2 className="mt-4 font-[var(--font-syne)] text-3xl font-semibold tracking-tight text-[#064e3b] sm:text-4xl md:text-5xl">
+          Loved by families
         </h2>
-
-        <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-slate-500">
-          Real experiences from businesses we&apos;ve helped through
-          web development, SEO, design and digital marketing.
+        <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-[#687366] sm:text-base md:text-lg">
+          Real experiences from families who trust Relyn to take care of everyday needs at home.
         </p>
-
-        {/* Rating */}
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-5 text-sm">
-
-          <div className="text-lg text-[#FF6600]">
-            ★★★★★
-          </div>
-
-          <strong className="text-slate-900">
-            4.9 / 5
-          </strong>
-
-          <span className="h-5 w-px bg-slate-200" />
-
-          <span className="text-slate-500">
-            100+ successful projects
-          </span>
-
-          <span className="h-5 w-px bg-slate-200" />
-
-          <span className="text-slate-500">
-            98% client satisfaction
-          </span>
-        </div>
       </div>
 
+      <div className="relative mt-12 space-y-6 md:mt-16">
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-[#F7F0D4] to-transparent md:w-32" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-[#F7F0D4] to-transparent md:w-32" />
 
-      {/* Reviews */}
-      <div className="mt-16 space-y-6">
-
-        {/* ROW 1 - LEFT */}
         <div className="review-slider">
           <div className="review-track review-left">
             {rowOne.map((review, index) => (
-              <ReviewCard
-                key={`first-${index}`}
-                review={review}
-              />
+              <ReviewCard key={`row-one-${index}`} review={review} />
             ))}
           </div>
         </div>
 
-
-        {/* ROW 2 - RIGHT */}
         <div className="review-slider">
           <div className="review-track review-right">
             {rowTwo.map((review, index) => (
-              <ReviewCard
-                key={`second-${index}`}
-                review={review}
-              />
+              <ReviewCard key={`row-two-${index}`} review={review} />
             ))}
           </div>
         </div>
-
       </div>
 
-
       <style jsx>{`
-
         .review-slider {
           width: 100%;
           overflow: hidden;
         }
-
         .review-track {
           display: flex;
           width: max-content;
-          gap: 24px;
+          gap: 20px;
           will-change: transform;
         }
-
         .review-left {
           animation: scrollLeft 45s linear infinite;
         }
-
         .review-right {
           animation: scrollRight 45s linear infinite;
         }
-
         .review-slider:hover .review-track {
           animation-play-state: paused;
         }
-
         @keyframes scrollLeft {
           from {
             transform: translateX(0);
           }
-
           to {
             transform: translateX(-50%);
           }
         }
-
         @keyframes scrollRight {
           from {
             transform: translateX(-50%);
           }
-
           to {
             transform: translateX(0);
           }
         }
-
         @media (max-width: 768px) {
-
           .review-left,
           .review-right {
-            animation-duration: 35s;
+            animation-duration: 30s;
           }
-
         }
-
         @media (prefers-reduced-motion: reduce) {
-
           .review-left,
           .review-right {
             animation: none;
           }
-
         }
-
       `}</style>
-
     </section>
   );
 }

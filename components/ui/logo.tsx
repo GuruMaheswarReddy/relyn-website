@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { siteConfig } from "@/constants/site";
 
 type LogoProps = {
   className?: string;
@@ -20,33 +19,39 @@ export function Logo({
       href="/"
       className={cn(
         "group inline-flex items-center gap-2.5 transition-[color,opacity] duration-300 hover:opacity-90",
-        isDark ? "text-white" : "text-ink",
-        className,
+        isDark ? "text-white" : "text-[#064E3B]",
+        className
       )}
-      aria-label={`${siteConfig.name} home`}
+      aria-label="Relyn home"
     >
+      {/* Logo Icon */}
       <span
         aria-hidden
         className={cn(
-          "relative grid h-9 w-9 place-items-center overflow-hidden rounded-md transition-colors duration-300",
-          isDark ? "bg-white text-ink" : "bg-ink text-white",
+          "relative grid h-9 w-9 place-items-center overflow-hidden rounded-full transition-colors duration-300",
+          isDark
+            ? "bg-white text-[#064E3B]"
+            : "bg-[#064E3B] text-white"
         )}
       >
         <span
           className={cn(
             "absolute inset-0",
             isDark
-              ? "bg-[radial-gradient(circle_at_30%_20%,rgba(20,184,166,0.35),transparent_55%)]"
-              : "bg-[radial-gradient(circle_at_30%_20%,rgba(20,184,166,0.55),transparent_55%)]",
+              ? "bg-[radial-gradient(circle_at_30%_20%,rgba(6,78,59,0.25),transparent_55%)]"
+              : "bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.25),transparent_55%)]"
           )}
         />
+
         <span className="relative font-display text-sm font-semibold tracking-tight">
-          A
+          R
         </span>
       </span>
+
+      {/* Relyn Wordmark */}
       {showWordmark ? (
-        <span className="font-display text-lg font-semibold tracking-tight">
-          {siteConfig.name}
+        <span className="font-display text-xl font-semibold tracking-tight">
+          relyn
         </span>
       ) : null}
     </Link>

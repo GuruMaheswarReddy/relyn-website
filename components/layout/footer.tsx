@@ -2,54 +2,96 @@
 
 import Link from "next/link";
 import { footerNav, socialLinks } from "@/constants/navigation";
-import { services } from "@/constants/services";
 import { siteConfig } from "@/constants/site";
 import { Container } from "@/components/ui/container";
 import { Logo } from "@/components/ui/logo";
 import { SocialIcons } from "@/components/ui/social-icons";
 
+// Updated list of Relyn's 8 core housekeeping services
+const relynServices = [
+  {
+    title: "Regular Home Cleaning",
+    href: "/services#regular-home-cleaning",
+  },
+  {
+    title: "Deep Cleaning",
+    href: "/services#deep-cleaning",
+  },
+  {
+    title: "Kitchen Cleaning",
+    href: "/services#kitchen-cleaning",
+  },
+  {
+    title: "Bathroom Cleaning",
+    href: "/services#bathroom-cleaning",
+  },
+  {
+    title: "Dusting & Vacuuming",
+    href: "/services#dusting-vacuuming",
+  },
+  {
+    title: "Floor Cleaning",
+    href: "/services#floor-cleaning",
+  },
+  {
+    title: "Laundry & Ironing",
+    href: "/services#laundry-ironing",
+  },
+  {
+    title: "Bed & Linen Care",
+    href: "/services#bed-linen-care",
+  },
+];
+
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="w-full bg-[#FAFAFA] text-slate-700 border-t border-slate-200/80 pt-16 pb-12 font-sans">
-      <Container className="max-w-[1400px] mx-auto px-6 lg:px-12">
-        <div className="grid gap-10 lg:grid-cols-[1.4fr_0.9fr_0.9fr_1.3fr] lg:gap-12 pb-16">
-          
-          {/* Column 1: Logo, Description & Address */}
+    <footer className="w-full border-t border-[#064e3b]/10 bg-[#F7F0D4] text-[#304035]">
+      <Container className="mx-auto max-w-[1400px] px-6 py-16 lg:px-12">
+
+        {/* Main Footer */}
+        <div className="grid gap-12 pb-14 lg:grid-cols-[1.4fr_0.8fr_0.9fr_1fr] lg:gap-14">
+
+          {/* BRAND */}
           <div className="space-y-6">
             <Logo tone="light" />
-            
-            <p className="text-sm leading-relaxed text-slate-500 max-w-sm">
-              {siteConfig.description}
+
+            <p className="max-w-sm text-sm leading-7 text-[#687366]">
+              Relyn makes everyday life easier with trusted professionals
+              for housekeeping, cooking, child care, elder care and more.
             </p>
 
-            <div className="pt-2">
-              <p className="text-[11px] font-bold uppercase tracking-widest text-[#FF6600] mb-2">
-                HEADQUARTERS
-              </p>
-              <p className="text-sm text-slate-600 leading-relaxed max-w-xs">
-                {siteConfig.address}
-              </p>
+            {/* Trust Badge */}
+            <div className="inline-flex items-center gap-3 rounded-full border border-[#b8d6b2] bg-[#DBF5D6] px-4 py-2.5">
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#064e3b] text-xs text-white">
+                ✓
+              </span>
+
+              <span className="text-xs font-semibold text-[#064e3b]">
+                Trusted Home Services
+              </span>
             </div>
 
+            {/* Social Icons */}
             <SocialIcons
               links={socialLinks}
-              iconClassName="border-slate-200 bg-white text-slate-600 hover:bg-[#0038A8] hover:border-[#0038A8] hover:text-white transition-all duration-200"
+              iconClassName="border-[#b8d6b2] bg-white text-[#064e3b] hover:bg-[#064e3b] hover:border-[#064e3b] hover:text-white transition-all duration-200"
             />
           </div>
 
-          {/* Column 2: Quick Links */}
+          {/* QUICK LINKS */}
           <nav aria-label="Footer Navigation">
-            <h3 className="text-xs font-bold uppercase tracking-widest text-slate-900 mb-6">
-              QUICK LINKS
+            <h3 className="mb-6 text-xs font-bold uppercase tracking-[0.2em] text-[#064e3b]">
+              Quick Links
             </h3>
-            <ul className="space-y-3.5">
+
+            <ul className="space-y-4">
               {footerNav.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-sm text-slate-500 hover:text-[#0038A8] transition-colors duration-200 block"
+                    className="text-sm text-[#687366] transition-colors duration-200 hover:text-[#064e3b]"
                   >
                     {item.label}
                   </Link>
@@ -58,81 +100,111 @@ export function Footer() {
             </ul>
           </nav>
 
-          {/* Column 3: Services */}
-          <nav aria-label="Footer Services">
-            <h3 className="text-xs font-bold uppercase tracking-widest text-slate-900 mb-6">
-              SERVICES
+          {/* OUR SERVICES */}
+          <nav aria-label="Relyn Services">
+            <h3 className="mb-6 text-xs font-bold uppercase tracking-[0.2em] text-[#064e3b]">
+              Our Services
             </h3>
-            <ul className="space-y-3.5">
-              {services.map((service) => (
-                <li key={service.slug}>
+
+            <ul className="space-y-3">
+              {relynServices.map((service) => (
+                <li key={service.title}>
                   <Link
-                    href={`/services#${service.slug}`}
-                    className="text-sm text-slate-500 hover:text-[#0038A8] transition-colors duration-200 block"
+                    href={service.href}
+                    className="group flex items-center text-sm text-[#687366] transition-colors duration-200 hover:text-[#064e3b]"
                   >
-                    {service.title}
+                    <span className="mr-2 opacity-0 transition-all duration-200 group-hover:translate-x-1 group-hover:opacity-100">
+                      →
+                    </span>
+
+                    <span>{service.title}</span>
                   </Link>
                 </li>
               ))}
             </ul>
           </nav>
 
-          {/* Column 4: Stay Updated & CTA */}
-          <div className="space-y-8">
-            {/* Stay Updated / Newsletter */}
-            <div>
-              <h3 className="text-xs font-bold uppercase tracking-widest text-slate-900 mb-3">
-                STAY UPDATED
-              </h3>
-              <p className="text-sm text-slate-500 mb-4 leading-relaxed">
-                Subscribe to digital strategy updates and industry insights. No spam.
-              </p>
-              
-              <form onSubmit={(e) => e.preventDefault()} className="flex gap-2">
-                <input
-                  type="email"
-                  placeholder="Email address..."
-                  className="w-full px-4 py-2.5 text-sm bg-white border border-slate-200 rounded-lg focus:outline-none focus:border-[#0038A8] text-slate-800 placeholder:text-slate-400 shadow-sm"
-                  required
-                />
-                <button
-                  type="submit"
-                  className="px-5 py-2.5 text-sm font-semibold text-white bg-[#0038A8] hover:bg-[#FF6600] rounded-lg transition-colors duration-300 shrink-0 shadow-sm"
-                >
-                  Subscribe
-                </button>
-              </form>
-            </div>
+          {/* NEED A HAND */}
+          <div>
+            <h3 className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-[#064e3b]">
+              Need a Hand?
+            </h3>
 
-            {/* Direct Consultation Button */}
-            <div>
-              <h3 className="text-xs font-bold uppercase tracking-widest text-slate-900 mb-3">
-                READY TO BUILD?
-              </h3>
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center w-full sm:w-auto px-6 py-2.5 text-sm font-medium text-slate-800 bg-white border border-slate-200 rounded-lg hover:border-[#FF6600] hover:text-[#FF6600] transition-all duration-200 shadow-sm"
-              >
-                Book a Consultation
-              </Link>
+            <p className="mb-6 text-sm leading-6 text-[#687366]">
+              Tell us what you need and we&apos;ll help you find the right
+              service for your home.
+            </p>
+
+            {/* CTA */}
+            <Link
+              href="/contact"
+              className="group inline-flex w-full items-center justify-center rounded-full bg-[#064e3b] px-6 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#0f7a5c]"
+            >
+              Book a Service
+              <span className="ml-2 transition-transform duration-200 group-hover:translate-x-1">
+                →
+              </span>
+            </Link>
+
+            {/* Contact Information */}
+            <div className="mt-7 space-y-4">
+
+              {/* Contact Email */}
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#8f7d4d]">
+                  Contact
+                </p>
+
+                <a
+                  href="mailto:help@relyn.com"
+                  className="mt-1 block text-sm text-[#687366] transition-colors hover:text-[#064e3b]"
+                >
+                  help@relyn.com
+                </a>
+              </div>
+
+              {/* Service Area */}
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#8f7d4d]">
+                  Service Area
+                </p>
+
+                <p className="mt-1 max-w-xs text-sm leading-6 text-[#687366]">
+                  {siteConfig.address || "Serving families with care"}
+                </p>
+              </div>
+
             </div>
           </div>
-
         </div>
 
-        {/* Bottom Bar / Copyright */}
-        <div className="pt-8 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <p>© {year} {siteConfig.legalName}. All rights reserved.</p>
+        {/* BOTTOM BAR */}
+        <div className="flex flex-col items-center justify-between gap-5 border-t border-[#064e3b]/10 pt-7 sm:flex-row">
 
+          {/* Copyright */}
+          <p className="text-xs text-[#71806f]">
+            © {year} Relyn. All rights reserved.
+          </p>
+
+          {/* Legal Links */}
           <div className="flex gap-6">
-            <Link href="/privacy" className="hover:text-slate-800 transition-colors">
+            <Link
+              href="/privacy"
+              className="text-xs text-[#71806f] transition-colors hover:text-[#064e3b]"
+            >
               Privacy Policy
             </Link>
-            <Link href="/terms" className="hover:text-slate-800 transition-colors">
+
+            <Link
+              href="/terms"
+              className="text-xs text-[#71806f] transition-colors hover:text-[#064e3b]"
+            >
               Terms of Service
             </Link>
           </div>
+
         </div>
+
       </Container>
     </footer>
   );
