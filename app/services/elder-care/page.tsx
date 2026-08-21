@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useRef } from "react";
 import { cn } from "@/lib/utils";
+import { ValuePillars } from "@/components/sections/ValuePillars";
 import { Heart, ShieldCheck, Check, X, Users, Clock, SmilePlus } from "lucide-react";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -356,6 +357,11 @@ export default function ElderCarePage() {
                 </li>
               </ul>
             </div>
+          </div>
+
+          {/* Value Pillars */}
+          <div className="mt-16">
+            <ValuePillars />
           </div>
         </div>
       </section>

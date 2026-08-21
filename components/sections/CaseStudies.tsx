@@ -1,137 +1,171 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
+import { ValuePillars } from "@/components/sections/ValuePillars";
 
 export default function AboutRelyn() {
   return (
     <>
-      <section className="bg-[#F3EDDD] py-24" id="about">
-        <div className="max-w-[1180px] mx-auto px-6 md:px-8">
-          
-          {/* About Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-16 mb-16">
-            
-            {/* Left Intro */}
+      {/* SVG ClipPath Definition for Left Image Curve */}
+      <svg width="0" height="0" className="absolute pointer-events-none">
+        <defs>
+          <clipPath id="about-image-curve" clipPathUnits="objectBoundingBox">
+            <path d="M 0 0.44 C 0.32 0.16, 0.68 0, 1 0 L 1 1 L 0 1 Z" />
+          </clipPath>
+        </defs>
+      </svg>
+
+      <section className="bg-[#FAF6EC] py-6 sm:py-8 lg:py-10" id="about">
+        <div className="max-w-[1280px] mx-auto px-6 md:px-10">
+
+          {/* Main Top 2-Column Grid matching Image 2 */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start mb-0">
+
+            {/* Left Column: Typography & Curved Living Room Photo */}
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
+              className="lg:col-span-6 flex flex-col justify-between"
             >
-              <div className="label mb-3">About Relyn</div>
-              <h2 className="text-[30px] sm:text-[36px] lg:text-[42px] font-serif leading-[1.15] text-[#1F4234] mb-4.5">
-                A trusted support brand, not just a services company.
-              </h2>
-              <div className="font-serif italic text-[19px] text-[#A8843C] mb-5">
-                "Find someone you can trust and rely on."
+              <div>
+                {/* Top Label */}
+                <div className="label mb-1.5 text-[#A8843C] font-bold text-[11px] tracking-[0.14em] uppercase">
+                  &mdash; ABOUT RELYN
+                </div>
+
+                {/* Headline */}
+                <h2 className="text-[28px] sm:text-[34px] lg:text-[36px] font-serif leading-[1.12] text-[#1F4234] mb-2">
+                  A trusted support brand, not just a{" "}
+                  <span className="text-[#A8843C] font-serif italic font-normal block sm:inline">
+                    services company.
+                  </span>
+                </h2>
+
+                {/* Quote Callout */}
+                <div className="font-serif italic text-[16px] sm:text-[18px] font-normal text-[#A8843C] mb-2 flex items-center gap-1.5">
+                  <span className="text-[22px] leading-none text-[#A8843C]">&ldquo;</span>
+                  <span>Find someone you can trust and rely on.</span>
+                  <span className="text-[22px] leading-none text-[#A8843C]">&rdquo;</span>
+                </div>
+
+                {/* Intro Paragraph */}
+                <p className="text-[12.5px] sm:text-[13px] text-[#3E5E4F] max-w-[46ch] leading-relaxed mb-2">
+                  Relyn was created around a common problem &mdash; finding reliable household support can be stressful, uncertain and time-consuming. We set out to make that experience organised, dependable and reassuring.
+                </p>
               </div>
-              <p className="text-[15px] text-[#3E5E4F] max-w-[38ch] leading-relaxed">
-                Relyn was created around a common problem — finding reliable household support can be stressful, uncertain and time-consuming. We set out to make that experience organised, dependable and reassuring.
-              </p>
+
+              {/* Curved Living Room Photo Container */}
+              <div className="relative w-full h-[200px] sm:h-[220px] lg:h-[235px] mt-1">
+                {/* Curved Living Room Photo */}
+                <div className="w-full h-full relative overflow-hidden rounded-t-[80px] sm:rounded-t-[100px] rounded-b-[16px] shadow-xs">
+                  <Image
+                    src="/differencesectionimage.jpg?v=2"
+                    alt="Relyn warm living room interior"
+                    fill
+                    unoptimized
+                    priority
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover object-center"
+                  />
+                </div>
+              </div>
             </motion.div>
 
-            {/* Right Blocks */}
+            {/* Right Column: 3 Stacked Cards matching Image 2 */}
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="flex flex-col gap-9"
+              className="lg:col-span-6 flex flex-col gap-2.5 sm:gap-3 justify-start"
             >
-              <div>
-                <h3 className="font-serif text-[18.5px] text-[#1F4234] mb-2">What Relyn is</h3>
-                <p className="text-[14.8px] text-[#3E5E4F] max-w-[60ch] leading-relaxed">
-                  Relyn is built to make everyday life easier by connecting individuals and families with dependable support for their household needs. The idea is simple — when you need help, you should be able to find someone you can trust and rely on.
-                </p>
+              {/* Card 1: What Relyn is */}
+              <div className="bg-[#F8F5EE] rounded-[16px] lg:rounded-[18px] px-3.5 py-3 sm:px-4.5 sm:py-3.5 shadow-2xs border border-[rgba(31,66,52,0.06)] flex items-center gap-3.5 hover:shadow-xs transition-all">
+                <div className="w-11 h-11 rounded-full bg-[#122E23] text-[#C6A15B] flex items-center justify-center shrink-0 shadow-xs">
+                  <svg className="w-5.5 h-5.5" viewBox="0 0 24 24" fill="none" stroke="#C6A15B" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z" />
+                    <path d="M12 11.2a2.1 2.1 0 00-3 0 2.1 2.1 0 000 3l3 3 3-3a2.1 2.1 0 000-3 2.1 2.1 0 00-3 0z" stroke="#C6A15B" strokeWidth="1.6" />
+                  </svg>
+                </div>
+                <div className="border-l border-[rgba(31,66,52,0.12)] pl-3.5">
+                  <h3 className="font-serif text-[16.5px] sm:text-[17.5px] font-bold text-[#1F4234] mb-0.5">
+                    What Relyn is
+                  </h3>
+                  <p className="text-[12px] sm:text-[12.5px] text-[#3E5E4F] leading-snug">
+                    Relyn is built to make everyday life easier by connecting individuals and families with dependable support for their household needs. The idea is simple &mdash; when you need help, you should be able to find someone you can trust and rely on.
+                  </p>
+                </div>
               </div>
 
-              <div>
-                <h3 className="font-serif text-[18.5px] text-[#1F4234] mb-2">Our philosophy</h3>
-                <p className="text-[14.8px] text-[#3E5E4F] max-w-[60ch] leading-relaxed">
-                  Good support is not just about getting a task done. It is about trust, consistency, care and responsibility. When someone becomes part of your home or daily routine, you should have peace of mind knowing that responsibility is being handled properly.
-                </p>
+              {/* Card 2: Our philosophy */}
+              <div className="bg-[#F8F5EE] rounded-[16px] lg:rounded-[18px] px-3.5 py-3 sm:px-4.5 sm:py-3.5 shadow-2xs border border-[rgba(31,66,52,0.06)] flex items-center gap-3.5 hover:shadow-xs transition-all">
+                <div className="w-11 h-11 rounded-full bg-[#122E23] text-[#C6A15B] flex items-center justify-center shrink-0 shadow-xs">
+                  <svg className="w-5.5 h-5.5" viewBox="0 0 24 24" fill="none" stroke="#C6A15B" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M15 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                    <circle cx="8.5" cy="7" r="4" />
+                    <path d="M16.5 12.2a1.8 1.8 0 00-2.5 0 1.8 1.8 0 000 2.5l2.5 2.5 2.5-2.5a1.8 1.8 0 00-2.5 0z" stroke="#C6A15B" strokeWidth="1.6" />
+                  </svg>
+                </div>
+                <div className="border-l border-[rgba(31,66,52,0.12)] pl-3.5">
+                  <h3 className="font-serif text-[16.5px] sm:text-[17.5px] font-bold text-[#1F4234] mb-0.5">
+                    Our philosophy
+                  </h3>
+                  <p className="text-[12px] sm:text-[12.5px] text-[#3E5E4F] leading-snug">
+                    Good support is not just about getting a task done. It is about trust, consistency, care and responsibility. When someone becomes part of your home or daily routine, you should have peace of mind knowing that responsibility is being handled properly.
+                  </p>
+                </div>
               </div>
 
-              <div>
-                <h3 className="font-serif text-[18.5px] text-[#1F4234] mb-2">What makes Relyn different</h3>
-                <p className="text-[14.8px] text-[#3E5E4F] max-w-[60ch] leading-relaxed">
-                  Relyn brings a more professional, reliable and thoughtful approach to household support. The focus is not simply on providing a service, but on understanding your requirement and making the overall experience easier and more dependable.
-                </p>
+              {/* Card 3: What makes Relyn different */}
+              <div className="bg-[#F8F5EE] rounded-[16px] lg:rounded-[18px] px-3.5 py-3 sm:px-4.5 sm:py-3.5 shadow-2xs border border-[rgba(31,66,52,0.06)] flex items-center gap-3.5 hover:shadow-xs transition-all">
+                <div className="w-11 h-11 rounded-full bg-[#122E23] text-[#C6A15B] flex items-center justify-center shrink-0 shadow-xs">
+                  <svg className="w-5.5 h-5.5" viewBox="0 0 24 24" fill="none" stroke="#C6A15B" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    <polygon points="12 7.8 13.2 10.3 16 10.7 14 12.6 14.5 15.3 12 14 9.5 15.3 10 12.6 8 10.7 10.8 10.3" stroke="#C6A15B" strokeWidth="1.5" />
+                  </svg>
+                </div>
+                <div className="border-l border-[rgba(31,66,52,0.12)] pl-3.5">
+                  <h3 className="font-serif text-[16.5px] sm:text-[17.5px] font-bold text-[#1F4234] mb-0.5">
+                    What makes Relyn different
+                  </h3>
+                  <p className="text-[12px] sm:text-[12.5px] text-[#3E5E4F] leading-snug">
+                    Relyn brings a more professional, reliable and thoughtful approach to household support. The focus is not simply on providing a service, but on understanding your requirement and making the overall experience easier and more dependable.
+                  </p>
+                </div>
               </div>
             </motion.div>
 
           </div>
 
-          {/* 5 Values Cards Grid */}
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 pt-8 border-t border-[rgba(31,66,52,0.1)]"
-          >
-            <div className="text-center p-5">
-              <svg className="w-[26px] h-[26px] text-[#A8843C] mx-auto mb-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                <path d="M12 3l7 3v6c0 5-3 8-7 9-4-1-7-4-7-9V6l7-3z" />
-              </svg>
-              <h4 className="font-sans font-semibold text-[14.5px] text-[#1F4234] mb-1.5">Trust</h4>
-              <p className="text-[12px] text-[#3E5E4F] leading-snug">Confidence in the people and services we provide.</p>
-            </div>
-
-            <div className="text-center p-5">
-              <svg className="w-[26px] h-[26px] text-[#A8843C] mx-auto mb-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                <path d="M12 21s-7-4.6-9.5-9C.7 8.2 2.5 4 6.5 4c2 0 3.6 1.2 5.5 3.5C13.9 5.2 15.5 4 17.5 4 21.5 4 23.3 8.2 21.5 12 19 16.4 12 21 12 21z" />
-              </svg>
-              <h4 className="font-sans font-semibold text-[14.5px] text-[#1F4234] mb-1.5">Care</h4>
-              <p className="text-[12px] text-[#3E5E4F] leading-snug">Treating every requirement with respect.</p>
-            </div>
-
-            <div className="text-center p-5">
-              <svg className="w-[26px] h-[26px] text-[#A8843C] mx-auto mb-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                <path d="M12 8v5l3 3M12 3a9 9 0 100 18 9 9 0 000-18z" />
-              </svg>
-              <h4 className="font-sans font-semibold text-[14.5px] text-[#1F4234] mb-1.5">Reliability</h4>
-              <p className="text-[12px] text-[#3E5E4F] leading-snug">Being dependable when our customers need us.</p>
-            </div>
-
-            <div className="text-center p-5">
-              <svg className="w-[26px] h-[26px] text-[#A8843C] mx-auto mb-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                <path d="M5 13l4 4L19 7" />
-              </svg>
-              <h4 className="font-sans font-semibold text-[14.5px] text-[#1F4234] mb-1.5">Responsibility</h4>
-              <p className="text-[12px] text-[#3E5E4F] leading-snug">Taking ownership rather than simply completing a task.</p>
-            </div>
-
-            <div className="text-center p-5 col-span-2 sm:col-span-1">
-              <svg className="w-[26px] h-[26px] text-[#A8843C] mx-auto mb-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                <path d="M4 20c1-4 4-6 8-6s7 2 8 6M12 12a4 4 0 100-8 4 4 0 000 8z" />
-              </svg>
-              <h4 className="font-sans font-semibold text-[14.5px] text-[#1F4234] mb-1.5">Peace of Mind</h4>
-              <p className="text-[12px] text-[#3E5E4F] leading-snug">The feeling that it is taken care of.</p>
-            </div>
-          </motion.div>
+          {/* Bottom 5-Value Pillar Card Bar matching Image 2 */}
+          <div className="relative z-20 -mt-5 sm:-mt-7 lg:-mt-8">
+            <ValuePillars />
+          </div>
 
         </div>
       </section>
 
       {/* Quote Strip */}
-      <section className="bg-[#1F4234] text-[#FAF6EC] text-center py-20">
-        <div className="max-w-[1180px] mx-auto px-6 md:px-8">
+      <section className="bg-[#1F4234] text-[#FAF6EC] text-center py-16">
+        <div className="max-w-[1280px] mx-auto px-6 md:px-10">
           <motion.blockquote
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="font-serif italic text-[22px] sm:text-[28px] lg:text-[30px] max-w-[20ch] mx-auto mb-4 leading-snug"
+            className="font-serif italic text-[22px] sm:text-[28px] lg:text-[30px] max-w-[24ch] mx-auto mb-3.5 leading-snug text-[#FAF6EC]"
           >
-            "When someone becomes part of your home, it should never feel uncertain."
+            &ldquo;When someone becomes part of your home, it should never feel uncertain.&rdquo;
           </motion.blockquote>
           <motion.cite
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="not-italic text-[13px] text-[rgba(250,246,236,0.6)] tracking-[0.05em] uppercase font-sans"
+            className="not-italic text-[12.5px] text-[#A8843C] tracking-[0.14em] uppercase font-sans font-bold"
           >
             THE RELYN PHILOSOPHY
           </motion.cite>

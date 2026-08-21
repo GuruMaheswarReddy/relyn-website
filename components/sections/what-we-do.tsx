@@ -262,55 +262,265 @@ export function WhatWeDo() {
 
         </div>
 
-        {/* Coming Soon Section */}
+        {/* Coming Soon Section matching reference design image */}
         <div>
-          <div className="flex items-baseline gap-3.5 mb-6">
+          <div className="flex items-baseline gap-3.5 mb-8">
             <div className="label m-0">Coming soon</div>
-            <h3 className="font-serif italic text-[20px] text-[#3E5E4F]">More support, on the way.</h3>
+            <h3 className="font-serif italic text-[22px] text-[#3E5E4F]">More support, on the way.</h3>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
-            <div className="relative border border-dashed border-[rgba(31,66,52,0.2)] rounded-[16px] p-5 opacity-90 bg-white/50">
-              <span className="absolute top-4 right-4 text-[10px] font-bold tracking-[0.1em] uppercase text-[#A8843C] bg-[#EEF1E8] px-2.5 py-1 rounded-full">Soon</span>
-              <svg className="w-6.5 h-6.5 text-[#3E5E4F] mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-                <circle cx="12" cy="8" r="3.4" />
-                <path d="M6 20c0-4 2.7-6 6-6s6 2 6 6" />
-              </svg>
-              <h4 className="font-sans font-semibold text-[14.5px] text-[#1F4234] mb-1">Child Care</h4>
-              <p className="text-[12px] text-[#3E5E4F] leading-relaxed">Trusted childcare and everyday support for families.</p>
+            {/* Coming Soon Card 1: Child Care */}
+            <div className="bg-white rounded-[24px] lg:rounded-[28px] p-6 text-center flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300 border border-[rgba(31,66,52,0.08)] relative overflow-hidden h-full group">
+              <div>
+                {/* Top SOON Badge */}
+                <div className="flex justify-start mb-2">
+                  <span className="border border-[#A8843C] text-[#A8843C] text-[10px] font-bold tracking-[0.14em] uppercase px-3 py-1 rounded-full">
+                    SOON
+                  </span>
+                </div>
+
+                {/* Center Circular Icon Graphic with Leaf Motif */}
+                <div className="relative w-22 h-22 rounded-full bg-[#EEF1E8] mx-auto flex items-center justify-center my-3 text-[#1F4234] shrink-0">
+                  <svg className="w-10 h-10 text-[#1F4234]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="9" cy="7" r="3" />
+                    <path d="M4 19c0-3.5 2.5-5 5-5s5 1.5 5 5" />
+                    <circle cx="17" cy="11" r="2" fill="#C6A15B" stroke="none" />
+                    <path d="M14 19c.5-1.8 2-3 4-3s3.5 1.2 4 3" />
+                  </svg>
+                  {/* Leaf Graphic Accent */}
+                  <svg className="absolute -right-3 top-2 w-8 h-8 text-[#A8843C]/40 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
+                    <path d="M12 2C6.5 2 2 6.5 2 12c0 5.5 4.5 10 10 10s10-4.5 10-10C22 6.5 17.5 2 12 2z" />
+                    <path d="M12 22V12" />
+                    <path d="M12 12c4-2 6-6 6-10" />
+                  </svg>
+                </div>
+
+                {/* Title & Description */}
+                <h4 className="font-serif text-[18px] sm:text-[19px] font-bold text-[#1F4234] text-center mb-1.5">
+                  Child Care
+                </h4>
+                <p className="text-[12.5px] text-[#3E5E4F] max-w-[26ch] mx-auto mb-5 leading-snug">
+                  Trusted childcare and everyday support for growing families.
+                </p>
+              </div>
+
+              {/* Bottom Feature Box */}
+              <div className="bg-[#F9F8F4] rounded-[16px] p-4 text-left space-y-2.5 mt-auto">
+                <div className="text-[12px] font-medium text-[#1F4234] flex items-center gap-2.5">
+                  <svg className="w-4 h-4 text-[#1F4234] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    <path d="M9 12l2 2 4-4" />
+                  </svg>
+                  <span>Verified &amp; trained caregivers</span>
+                </div>
+                <div className="text-[12px] font-medium text-[#1F4234] flex items-center gap-2.5">
+                  <svg className="w-4 h-4 text-[#1F4234] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l8.78-8.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+                  </svg>
+                  <span>Safe, nurturing &amp; engaging care</span>
+                </div>
+                <div className="text-[12px] font-medium text-[#1F4234] flex items-center gap-2.5">
+                  <svg className="w-4 h-4 text-[#1F4234] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                    <line x1="16" y1="2" x2="16" y2="6" />
+                    <line x1="8" y1="2" x2="8" y2="6" />
+                    <line x1="3" y1="10" x2="21" y2="10" />
+                  </svg>
+                  <span>Flexible schedules</span>
+                </div>
+              </div>
             </div>
 
-            <div className="relative border border-dashed border-[rgba(31,66,52,0.2)] rounded-[16px] p-5 opacity-90 bg-white/50">
-              <span className="absolute top-4 right-4 text-[10px] font-bold tracking-[0.1em] uppercase text-[#A8843C] bg-[#EEF1E8] px-2.5 py-1 rounded-full">Soon</span>
-              <svg className="w-6.5 h-6.5 text-[#3E5E4F] mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-                <rect x="6" y="4" width="12" height="16" rx="1.5" />
-                <path d="M9 9h6M9 13h6" />
-              </svg>
-              <h4 className="font-sans font-semibold text-[14.5px] text-[#1F4234] mb-1">Laundry &amp; Assistance</h4>
-              <p className="text-[12px] text-[#3E5E4F] leading-relaxed">Laundry, ironing, folding and routine household assistance.</p>
+            {/* Coming Soon Card 2: Laundry & Assistance */}
+            <div className="bg-white rounded-[24px] lg:rounded-[28px] p-6 text-center flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300 border border-[rgba(31,66,52,0.08)] relative overflow-hidden h-full group">
+              <div>
+                {/* Top SOON Badge */}
+                <div className="flex justify-start mb-2">
+                  <span className="border border-[#A8843C] text-[#A8843C] text-[10px] font-bold tracking-[0.14em] uppercase px-3 py-1 rounded-full">
+                    SOON
+                  </span>
+                </div>
+
+                {/* Center Circular Icon Graphic with Leaf Motif */}
+                <div className="relative w-22 h-22 rounded-full bg-[#EEF1E8] mx-auto flex items-center justify-center my-3 text-[#1F4234] shrink-0">
+                  <svg className="w-10 h-10 text-[#1F4234]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="4" y="3" width="16" height="18" rx="2" />
+                    <circle cx="12" cy="13" r="4" />
+                    <path d="M8 7h3" />
+                  </svg>
+                  {/* Leaf Graphic Accent */}
+                  <svg className="absolute -right-3 top-2 w-8 h-8 text-[#A8843C]/40 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
+                    <path d="M12 2C6.5 2 2 6.5 2 12c0 5.5 4.5 10 10 10s10-4.5 10-10C22 6.5 17.5 2 12 2z" />
+                    <path d="M12 22V12" />
+                    <path d="M12 12c4-2 6-6 6-10" />
+                  </svg>
+                </div>
+
+                {/* Title & Description */}
+                <h4 className="font-serif text-[18px] sm:text-[19px] font-bold text-[#1F4234] text-center mb-1.5">
+                  Laundry &amp; Assistance
+                </h4>
+                <p className="text-[12.5px] text-[#3E5E4F] max-w-[26ch] mx-auto mb-5 leading-snug">
+                  Laundry, ironing, folding and routine household help.
+                </p>
+              </div>
+
+              {/* Bottom Feature Box */}
+              <div className="bg-[#F9F8F4] rounded-[16px] p-4 text-left space-y-2.5 mt-auto">
+                <div className="text-[12px] font-medium text-[#1F4234] flex items-center gap-2.5">
+                  <svg className="w-4 h-4 text-[#1F4234] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                    <path d="M20.38 3.46L16 2a4 4 0 01-8 0L3.62 3.46A2 2 0 002 5.38V8c0 1.1.9 2 2 2h.38l.62 10a2 2 0 002 2h14a2 2 0 002-2l.62-10H20a2 2 0 002-2V5.38a2 2 0 00-1.62-1.92z" />
+                  </svg>
+                  <span>Wash, dry, fold &amp; iron</span>
+                </div>
+                <div className="text-[12px] font-medium text-[#1F4234] flex items-center gap-2.5">
+                  <svg className="w-4 h-4 text-[#1F4234] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <line x1="3" y1="9" x2="21" y2="9" />
+                    <line x1="9" y1="21" x2="9" y2="9" />
+                  </svg>
+                  <span>Wardrobe organization</span>
+                </div>
+                <div className="text-[12px] font-medium text-[#1F4234] flex items-center gap-2.5">
+                  <svg className="w-4 h-4 text-[#1F4234] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                  </svg>
+                  <span>On-time, every time</span>
+                </div>
+              </div>
             </div>
 
-            <div className="relative border border-dashed border-[rgba(31,66,52,0.2)] rounded-[16px] p-5 opacity-90 bg-white/50">
-              <span className="absolute top-4 right-4 text-[10px] font-bold tracking-[0.1em] uppercase text-[#A8843C] bg-[#EEF1E8] px-2.5 py-1 rounded-full">Soon</span>
-              <svg className="w-6.5 h-6.5 text-[#3E5E4F] mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-                <rect x="4" y="7" width="16" height="12" rx="1.4" />
-                <path d="M9 7V5.5A1.5 1.5 0 0110.5 4h3A1.5 1.5 0 0115 5.5V7" />
-              </svg>
-              <h4 className="font-sans font-semibold text-[14.5px] text-[#1F4234] mb-1">Corporate Support</h4>
-              <p className="text-[12px] text-[#3E5E4F] leading-relaxed">Reliable support services for offices and workplaces.</p>
+            {/* Coming Soon Card 3: Corporate Support */}
+            <div className="bg-white rounded-[24px] lg:rounded-[28px] p-6 text-center flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300 border border-[rgba(31,66,52,0.08)] relative overflow-hidden h-full group">
+              <div>
+                {/* Top SOON Badge */}
+                <div className="flex justify-start mb-2">
+                  <span className="border border-[#A8843C] text-[#A8843C] text-[10px] font-bold tracking-[0.14em] uppercase px-3 py-1 rounded-full">
+                    SOON
+                  </span>
+                </div>
+
+                {/* Center Circular Icon Graphic with Leaf Motif */}
+                <div className="relative w-22 h-22 rounded-full bg-[#EEF1E8] mx-auto flex items-center justify-center my-3 text-[#1F4234] shrink-0">
+                  <svg className="w-10 h-10 text-[#1F4234]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                    <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16" />
+                  </svg>
+                  {/* Leaf Graphic Accent */}
+                  <svg className="absolute -right-3 top-2 w-8 h-8 text-[#A8843C]/40 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
+                    <path d="M12 2C6.5 2 2 6.5 2 12c0 5.5 4.5 10 10 10s10-4.5 10-10C22 6.5 17.5 2 12 2z" />
+                    <path d="M12 22V12" />
+                    <path d="M12 12c4-2 6-6 6-10" />
+                  </svg>
+                </div>
+
+                {/* Title & Description */}
+                <h4 className="font-serif text-[18px] sm:text-[19px] font-bold text-[#1F4234] text-center mb-1.5">
+                  Corporate Support
+                </h4>
+                <p className="text-[12.5px] text-[#3E5E4F] max-w-[26ch] mx-auto mb-5 leading-snug">
+                  Reliable support services for offices and workplaces.
+                </p>
+              </div>
+
+              {/* Bottom Feature Box */}
+              <div className="bg-[#F9F8F4] rounded-[16px] p-4 text-left space-y-2.5 mt-auto">
+                <div className="text-[12px] font-medium text-[#1F4234] flex items-center gap-2.5">
+                  <svg className="w-4 h-4 text-[#1F4234] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                    <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M23 21v-2a4 4 0 00-3-3.87" />
+                    <path d="M16 3.13a4 4 0 010 7.75" />
+                  </svg>
+                  <span>Office housekeeping</span>
+                </div>
+                <div className="text-[12px] font-medium text-[#1F4234] flex items-center gap-2.5">
+                  <svg className="w-4 h-4 text-[#1F4234] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                    <path d="M18 8h1a4 4 0 010 8h-1" />
+                    <path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z" />
+                    <line x1="6" y1="1" x2="6" y2="4" />
+                    <line x1="10" y1="1" x2="10" y2="4" />
+                    <line x1="14" y1="1" x2="14" y2="4" />
+                  </svg>
+                  <span>Pantry &amp; cafeteria support</span>
+                </div>
+                <div className="text-[12px] font-medium text-[#1F4234] flex items-center gap-2.5">
+                  <svg className="w-4 h-4 text-[#1F4234] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                    <line x1="16" y1="2" x2="16" y2="6" />
+                    <line x1="8" y1="2" x2="8" y2="6" />
+                    <line x1="3" y1="10" x2="21" y2="10" />
+                  </svg>
+                  <span>Custom schedules</span>
+                </div>
+              </div>
             </div>
 
-            <div className="relative border border-dashed border-[rgba(31,66,52,0.2)] rounded-[16px] p-5 opacity-90 bg-white/50">
-              <span className="absolute top-4 right-4 text-[10px] font-bold tracking-[0.1em] uppercase text-[#A8843C] bg-[#EEF1E8] px-2.5 py-1 rounded-full">Soon</span>
-              <svg className="w-6.5 h-6.5 text-[#3E5E4F] mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-                <path d="M4 16l1.5-5A2 2 0 017.4 9.5h9.2a2 2 0 011.9 1.5L20 16" />
-                <rect x="3" y="16" width="18" height="4" rx="1" />
-                <circle cx="8" cy="20" r="1.4" />
-                <circle cx="16" cy="20" r="1.4" />
-              </svg>
-              <h4 className="font-sans font-semibold text-[14.5px] text-[#1F4234] mb-1">Driver / Errand Support</h4>
-              <p className="text-[12px] text-[#3E5E4F] leading-relaxed">Driver assistance, local errands, pick-up and drop-off.</p>
+            {/* Coming Soon Card 4: Driver / Errand Support */}
+            <div className="bg-white rounded-[24px] lg:rounded-[28px] p-6 text-center flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300 border border-[rgba(31,66,52,0.08)] relative overflow-hidden h-full group">
+              <div>
+                {/* Top SOON Badge */}
+                <div className="flex justify-start mb-2">
+                  <span className="border border-[#A8843C] text-[#A8843C] text-[10px] font-bold tracking-[0.14em] uppercase px-3 py-1 rounded-full">
+                    SOON
+                  </span>
+                </div>
+
+                {/* Center Circular Icon Graphic with Leaf Motif */}
+                <div className="relative w-22 h-22 rounded-full bg-[#EEF1E8] mx-auto flex items-center justify-center my-3 text-[#1F4234] shrink-0">
+                  <svg className="w-10 h-10 text-[#1F4234]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9C2 11.2 2 11.6 2 12v4c0 .6.4 1 1 1h2" />
+                    <circle cx="7" cy="17" r="2" />
+                    <circle cx="17" cy="17" r="2" />
+                  </svg>
+                  {/* Leaf Graphic Accent */}
+                  <svg className="absolute -right-3 top-2 w-8 h-8 text-[#A8843C]/40 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
+                    <path d="M12 2C6.5 2 2 6.5 2 12c0 5.5 4.5 10 10 10s10-4.5 10-10C22 6.5 17.5 2 12 2z" />
+                    <path d="M12 22V12" />
+                    <path d="M12 12c4-2 6-6 6-10" />
+                  </svg>
+                </div>
+
+                {/* Title & Description */}
+                <h4 className="font-serif text-[18px] sm:text-[19px] font-bold text-[#1F4234] text-center mb-1.5">
+                  Driver / Errand Support
+                </h4>
+                <p className="text-[12.5px] text-[#3E5E4F] max-w-[26ch] mx-auto mb-5 leading-snug">
+                  Driver assistance, local errands, pick-up and drop-off.
+                </p>
+              </div>
+
+              {/* Bottom Feature Box */}
+              <div className="bg-[#F9F8F4] rounded-[16px] p-4 text-left space-y-2.5 mt-auto">
+                <div className="text-[12px] font-medium text-[#1F4234] flex items-center gap-2.5">
+                  <svg className="w-4 h-4 text-[#1F4234] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                    <circle cx="12" cy="12" r="9" />
+                    <circle cx="12" cy="12" r="3" />
+                    <line x1="12" y1="3" x2="12" y2="9" />
+                    <line x1="12" y1="15" x2="12" y2="21" />
+                    <line x1="3" y1="12" x2="9" y2="12" />
+                    <line x1="15" y1="12" x2="21" y2="12" />
+                  </svg>
+                  <span>Experienced &amp; verified drivers</span>
+                </div>
+                <div className="text-[12px] font-medium text-[#1F4234] flex items-center gap-2.5">
+                  <svg className="w-4 h-4 text-[#1F4234] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                  <span>Errands &amp; local assistance</span>
+                </div>
+                <div className="text-[12px] font-medium text-[#1F4234] flex items-center gap-2.5">
+                  <svg className="w-4 h-4 text-[#1F4234] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                  </svg>
+                  <span>Safe &amp; on-time service</span>
+                </div>
+              </div>
             </div>
 
           </div>

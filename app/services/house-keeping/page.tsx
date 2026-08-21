@@ -466,7 +466,7 @@ export default function HouseKeepingPage() {
       ====================================================== */}
       <section className="bg-white py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          
+
           {/* Section Header */}
           <div className="mb-12 text-center">
             <p className="mb-2 text-xs font-bold uppercase tracking-[0.25em] text-[#825D34]">
@@ -579,7 +579,7 @@ export default function HouseKeepingPage() {
       ====================================================== */}
       <section className="bg-[#FBF9F7] py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          
+
           {/* Section Header */}
           <div className="mb-14 text-center">
             <p className="mb-2 text-xs font-bold uppercase tracking-[0.25em] text-[#825D34]">
@@ -595,7 +595,7 @@ export default function HouseKeepingPage() {
 
           {/* 4-Column Grid Layout */}
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            
+
             {/* Card 1 */}
             <div className="rounded-3xl border border-[#E1D6C9] bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
               <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#F2EDE6] text-[#825D34]">
