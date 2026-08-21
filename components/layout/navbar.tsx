@@ -2,15 +2,15 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import { mainNav } from "@/constants/navigation";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="absolute top-0 left-0 right-0 z-50 bg-transparent pt-4 lg:pt-6">
-      <nav className="max-w-[1360px] mx-auto px-6 md:px-10 lg:px-16 flex items-center justify-between h-[75px]">
+    <header className="sticky top-0 z-50 bg-[#FAF6EC] border-b border-[rgba(31,66,52,0.06)]">
+      <nav className="max-w-[1280px] mx-auto px-6 md:px-10 flex items-center justify-between h-[75px]">
         {/* Brand Logo & Subtitle */}
         <Link href="#top" className="flex items-center gap-3.5 group">
           <div className="w-10 h-10 relative shrink-0">
