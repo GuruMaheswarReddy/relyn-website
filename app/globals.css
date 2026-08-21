@@ -2,6 +2,24 @@
 @import "../styles/globals.css";
 
 @theme inline {
+  --color-ivory: #FAF6EC;
+  --color-ivory-2: #F3EDDD;
+  --color-sage: #EEF1E8;
+  --color-white: #FFFFFF;
+  --color-forest: #1F4234;
+  --color-forest-deep: #122E23;
+  --color-forest-soft: #3E5E4F;
+  --color-gold: #C6A15B;
+  --color-gold-deep: #A8843C;
+
+  --color-blue-black: var(--forest-deep);
+  --color-warm-ivory: var(--ivory);
+  --color-muted-sage: var(--forest-soft);
+  --color-champagne-beige: var(--gold);
+  --color-muted-gold: var(--gold-deep);
+  --color-warm-cream: var(--ivory-2);
+  --color-soft-greige: var(--sage);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
@@ -13,12 +31,10 @@
   --color-surface-strong: var(--surface-strong);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
-  --font-sans: var(--font-body);
-  --font-display: var(--font-display);
-  --font-mono: var(--font-geist-mono);
-  --radius-sm: var(--radius-sm);
-  --radius-md: var(--radius-md);
-  --radius-lg: var(--radius-lg);
+
+  --font-sans: var(--font-b);
+  --font-serif: var(--font-d);
+  --font-display: var(--font-d);
 }
 
 html {
@@ -26,18 +42,20 @@ html {
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-body);
-  text-rendering: optimizeLegibility;
+  background: var(--ivory);
+  color: var(--forest);
+  font-family: var(--font-b);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--accent) 28%, white);
-  color: var(--ink);
+  background: var(--gold);
+  color: var(--forest-deep);
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--gold-deep);
   outline-offset: 3px;
 }

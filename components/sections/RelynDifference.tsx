@@ -24,7 +24,7 @@ const highlights = [
 
 export default function RelynDifference() {
   return (
-    <section className="bg-[#f8f9f7] py-20 md:py-28">
+    <section className="bg-[#FBF9F7] py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
         {/* Main Content */}
@@ -39,7 +39,7 @@ export default function RelynDifference() {
             className="relative"
           >
             {/* Decorative background */}
-            <div className="absolute -bottom-5 -left-5 h-32 w-32 rounded-full bg-[#e85d04]/10" />
+            <div className="absolute -bottom-5 -left-5 h-32 w-32 rounded-full bg-[#825D34]/10" />
 
             <div className="relative overflow-hidden rounded-[2rem]">
               <Image
@@ -52,12 +52,12 @@ export default function RelynDifference() {
               />
 
               {/* Small overlay */}
-              <div className="absolute bottom-5 left-5 right-5 rounded-2xl bg-white/95 p-5 shadow-lg backdrop-blur-sm">
-                <p className="text-sm font-medium text-[#e85d04]">
+              <div className="absolute bottom-5 left-5 right-5 rounded-2xl bg-white/95 p-5 shadow-lg backdrop-blur-sm border border-[#E1D6C9]">
+                <p className="text-sm font-medium text-[#825D34]">
                   RELYN CARE
                 </p>
 
-                <p className="mt-1 text-lg font-semibold text-[#064e3b]">
+                <p className="mt-1 text-lg font-semibold text-[#021B30]">
                   Trusted help for everyday living.
                 </p>
               </div>
@@ -72,32 +72,32 @@ export default function RelynDifference() {
             transition={{ duration: 0.7 }}
           >
             {/* Small heading */}
-            <p className="mb-4 text-sm font-medium uppercase tracking-[0.25em] text-[#e85d04]">
+            <p className="mb-4 text-sm font-medium uppercase tracking-[0.25em] text-[#825D34]">
               The Relyn Difference
             </p>
 
             {/* Main heading */}
-            <h2 className="font-[var(--font-syne)] text-4xl font-semibold leading-tight tracking-tight text-[#064e3b] md:text-5xl">
+            <h2 className="font-[var(--font-syne)] text-4xl font-semibold leading-tight tracking-tight text-[#021B30] md:text-5xl">
               Everyday care,
               <br />
               made easier.
             </h2>
 
             {/* Description */}
-            <p className="mt-6 max-w-xl text-base leading-7 text-gray-600 md:text-lg">
+            <p className="mt-6 max-w-xl text-base leading-7 text-[#525D5A] md:text-lg">
               At Relyn, we believe getting reliable help at home should feel
               simple, safe and stress-free. Our trained professionals take
               care of the everyday tasks that matter, so you have more time
               for the people and moments that matter most.
             </p>
 
-            <p className="mt-4 max-w-xl text-base leading-7 text-gray-600">
+            <p className="mt-4 max-w-xl text-base leading-7 text-[#525D5A]">
               From housekeeping and cooking to child care and elder care, we
               bring dependable support right to your doorstep.
             </p>
 
             {/* Stats */}
-            <div className="mt-10 grid grid-cols-2 gap-x-8 gap-y-8 border-t border-[#d9ddd8] pt-8">
+            <div className="mt-10 grid grid-cols-2 gap-x-8 gap-y-8 border-t border-[#E1D6C9] pt-8">
               {highlights.map((item, index) => (
                 <motion.div
                   key={item.label}
@@ -109,11 +109,11 @@ export default function RelynDifference() {
                     delay: index * 0.08,
                   }}
                 >
-                  <div className="text-3xl font-semibold text-[#064e3b] md:text-4xl">
+                  <div className="text-3xl font-semibold text-[#021B30] md:text-4xl">
                     {item.value}
                   </div>
 
-                  <div className="mt-2 text-sm text-gray-500">
+                  <div className="mt-2 text-sm text-[#525D5A]">
                     {item.label}
                   </div>
                 </motion.div>
@@ -124,7 +124,7 @@ export default function RelynDifference() {
             <div className="mt-10">
               <a
                 href="/contact"
-                className="inline-flex items-center rounded-full bg-[#064e3b] px-7 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#e85d04]"
+                className="inline-flex items-center rounded-full bg-[#021B30] px-7 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#825D34]"
               >
                 Book a Service
               </a>

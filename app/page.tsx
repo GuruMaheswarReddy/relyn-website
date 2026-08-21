@@ -1,57 +1,42 @@
-import { Footer } from "@/components/layout";
-
-import {
-  Hero,
-  WhatWeDo,
-  Reviews,
-  Contact,
-} from "@/components/sections";
-
-import CaseStudies from "@/components/sections/CaseStudies";
+import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
+import { Hero } from "@/components/sections/hero";
 import WhyChooseRelyn from "@/components/sections/WhyChooseRelyn";
-import PopularServices from "@/components/sections/PopularServices";
-import MostBookedServices from "@/components/sections/MostBookedServices";
+import { PhotoReel } from "@/components/sections/PhotoReel";
+import { WhatWeDo } from "@/components/sections/what-we-do";
 import HowItWorks from "@/components/sections/HowItWorks";
-import RelynDifference from "@/components/sections/RelynDifference";
+import AboutRelyn from "@/components/sections/CaseStudies";
+import { Contact } from "@/components/sections/Contact";
 
 export default function Home() {
   return (
     <>
-      <main id="main-content" className="flex-1">
+      <Navbar />
 
-        {/* Hero */}
+      <main id="top" className="flex-1">
+        {/* Hero Banner */}
         <Hero />
 
         {/* Why Relyn */}
         <WhyChooseRelyn />
 
-        {/* What We Do */}
-        <WhatWeDo />
+        {/* Photo Reel - A Day in the Life */}
+        <PhotoReel />
 
-        {/* Popular Services */}
-        <PopularServices />
+        {/* What We Offer / Services */}
+        <WhatWeDo />
 
         {/* How It Works */}
         <HowItWorks />
 
-        {/* Most Booked Services */}
-        <MostBookedServices />
+        {/* About Relyn & Quote Strip */}
+        <AboutRelyn />
 
-        {/* Frequently Asked Questions */}
-        <RelynDifference />
-
-        {/* Reviews */}
-        <Reviews />
-
-        {/* Contact */}
+        {/* Contact & Enquiry Forms */}
         <Contact />
-
-        {/* Case Studies - Last Section */}
-        <CaseStudies />
-
       </main>
 
-      {/* Footer */}
+      {/* Final CTA & Footer */}
       <Footer />
     </>
   );

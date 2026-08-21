@@ -1,389 +1,316 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
-import { CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import { motion } from "framer-motion";
 
-export default function Contact() {
-  const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState<{
-    type: "success" | "error" | null;
-    message: string;
-  }>({ type: null, message: "" });
+export function Contact() {
+  const [activeTab, setActiveTab] = useState<"service" | "general">("service");
+  const [submitted, setSubmitted] = useState(false);
+  const [confirmMessage, setConfirmMessage] = useState("");
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>, type: "service" | "general") => {
     e.preventDefault();
-    setLoading(true);
-    setStatus({ type: null, message: "" });
-
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-
-    const data = {
-      name: formData.get("name"),
-      phone: formData.get("phone"),
-      email: formData.get("email"),
-      location: formData.get("location"),
-      service: formData.get("service"),
-      requirementType: formData.get("requirementType"),
-      startDate: formData.get("startDate"),
-      frequency: formData.get("frequency"),
-      additionalRequirements: formData.get("additionalRequirements"),
-      contactMethod: formData.get("contactMethod"),
-    };
-
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-
-      const result = await res.json();
-
-      if (result.success) {
-        setStatus({
-          type: "success",
-          message: "Thank you! Your service request has been received. Our team will contact you shortly.",
-        });
-        form.reset();
-      } else {
-        setStatus({
-          type: "error",
-          message: result.message || "Unable to send your request. Please try again.",
-        });
-      }
-    } catch (error) {
-      console.error(error);
-      setStatus({
-        type: "error",
-        message: "Something went wrong while submitting. Please check your connection and try again.",
-      });
-    } finally {
-      setLoading(false);
+    if (type === "service") {
+      setConfirmMessage(
+        "Thank you — we've received your service request and will call you shortly to understand your requirement in more detail."
+      );
+    } else {
+      setConfirmMessage(
+        "Thank you for reaching out — someone from Relyn will get back to you within one business day."
+      );
     }
-  }
+    setSubmitted(true);
+  };
 
   return (
-    <section id="contact" className="bg-[#f8f9f7] py-16 md:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="bg-[#EEF1E8] py-24" id="contact">
+      <div className="max-w-[1180px] mx-auto px-6 md:px-8 grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-12 lg:gap-16 items-start">
         
-        {/* Main Card Container */}
-        <div className="grid overflow-hidden rounded-3xl bg-white shadow-sm lg:grid-cols-12">
+        {/* Left Column */}
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
+          <div className="label mb-3">Get in touch</div>
+          <h2 className="text-[28px] sm:text-[34px] lg:text-[38px] font-serif leading-[1.15] text-[#1F4234] mb-4">
+            Let's understand what you need.
+          </h2>
+          <p className="text-[15px] text-[#3E5E4F] max-w-[38ch] mb-7 leading-relaxed">
+            Whether it's a specific service or a general question, tell us a little about your household and we'll take it from there.
+          </p>
 
-          {/* =====================================================
-              LEFT SIDE - IMAGE & BRANDING (5 Cols)
-          ====================================================== */}
-          <div className="relative min-h-[400px] lg:col-span-5 lg:min-h-full">
-            <Image
-              src="/formimage.jpg"
-              alt="Relyn home care service"
-              fill
-              priority
-              sizes="(max-width: 1024px) 100vw, 40vw"
-              className="object-cover"
-            />
+          <div className="space-y-4">
+            <div className="flex items-start gap-3.5">
+              <svg className="w-[18px] h-[18px] text-[#A8843C] mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                <path d="M5 13l4 4L19 7"/>
+              </svg>
+              <p className="text-[13.5px] text-[#3E5E4F]">
+                No obligation — we'll call to understand your requirement first.
+              </p>
+            </div>
 
-            {/* Dark Overlay Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#064e3b]/90 via-[#064e3b]/40 to-transparent" />
+            <div className="flex items-start gap-3.5">
+              <svg className="w-[18px] h-[18px] text-[#A8843C] mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                <path d="M5 13l4 4L19 7"/>
+              </svg>
+              <p className="text-[13.5px] text-[#3E5E4F]">
+                Currently serving JP Nagar and Banashankari, Bengaluru.
+              </p>
+            </div>
 
-            {/* Overlay Content */}
-            <div className="absolute bottom-0 left-0 right-0 p-8 md:p-10">
-              <span className="inline-block rounded-full bg-white/95 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#064e3b]">
-                Relyn Care
-              </span>
-
-              <h2 className="mt-4 font-[var(--font-syne)] text-3xl font-semibold leading-tight text-white md:text-4xl">
-                Everything at home,
-                <br />
-                taken care of.
-              </h2>
-
-              <p className="mt-3 text-sm leading-relaxed text-white/85">
-                Trusted professionals providing reliable everyday support with
-                care and attention you can count on.
+            <div className="flex items-start gap-3.5">
+              <svg className="w-[18px] h-[18px] text-[#A8843C] mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                <path d="M5 13l4 4L19 7"/>
+              </svg>
+              <p className="text-[13.5px] text-[#3E5E4F]">
+                We respond to every enquiry within one business day.
               </p>
             </div>
           </div>
+        </motion.div>
 
-          {/* =====================================================
-              RIGHT SIDE - FORM (7 Cols)
-          ====================================================== */}
-          <div className="p-6 sm:p-10 lg:col-span-7 lg:p-12">
-            
-            {/* Header */}
-            <div className="mb-8">
-              <p className="mb-2 text-xs font-semibold uppercase tracking-[0.25em] text-[#e85d04]">
-                Book a Service
-              </p>
-              <h3 className="font-[var(--font-syne)] text-2xl font-semibold text-[#064e3b] sm:text-3xl">
-                How can we help?
-              </h3>
-              <p className="mt-2 text-xs text-gray-500 sm:text-sm">
-                Fill out the details below so we can tailor the right support for your household.
-              </p>
-            </div>
-
-            {/* Submission Status Alert */}
-            {status.type && (
-              <div
-                className={`mb-6 flex items-start gap-3 rounded-xl p-4 text-sm ${
-                  status.type === "success"
-                    ? "bg-emerald-50 border border-emerald-200 text-emerald-800"
-                    : "bg-red-50 border border-red-200 text-red-800"
+        {/* Right Form Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="bg-white rounded-[10px] p-8 sm:p-10 shadow-[0_30px_60px_-30px_rgba(18,46,35,0.25)]"
+        >
+          {/* Tabs */}
+          {!submitted && (
+            <div className="flex gap-2 mb-7 border-b border-[rgba(31,66,52,0.14)]" role="tablist">
+              <button
+                type="button"
+                onClick={() => setActiveTab("service")}
+                className={`text-[14px] font-semibold pb-3.5 mr-6 border-b-2 transition-colors cursor-pointer ${
+                  activeTab === "service"
+                    ? "text-[#1F4234] border-[#A8843C]"
+                    : "text-[#3E5E4F] border-transparent"
                 }`}
               >
-                {status.type === "success" ? (
-                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" />
-                ) : (
-                  <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-red-600" />
-                )}
-                <p>{status.message}</p>
-              </div>
-            )}
-
-            {/* Form */}
-            <form onSubmit={handleSubmit} className="space-y-5">
-
-              {/* 1. Name & Phone */}
-              <div className="grid gap-5 sm:grid-cols-2">
-                <div>
-                  <label htmlFor="name" className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-[#064e3b]">
-                    Name *
-                  </label>
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    required
-                    placeholder="John Doe"
-                    className="w-full rounded-xl border border-gray-200 bg-[#fafbf9] px-4 py-3 text-sm text-gray-800 outline-none transition placeholder:text-gray-400 focus:border-[#064e3b] focus:ring-2 focus:ring-[#064e3b]/10"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="phone" className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-[#064e3b]">
-                    Phone Number *
-                  </label>
-                  <input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    required
-                    placeholder="+91 98765 43210"
-                    className="w-full rounded-xl border border-gray-200 bg-[#fafbf9] px-4 py-3 text-sm text-gray-800 outline-none transition placeholder:text-gray-400 focus:border-[#064e3b] focus:ring-2 focus:ring-[#064e3b]/10"
-                  />
-                </div>
-              </div>
-
-              {/* 2. Email & City/Location */}
-              <div className="grid gap-5 sm:grid-cols-2">
-                <div>
-                  <label htmlFor="email" className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-[#064e3b]">
-                    Email Address
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="you@example.com"
-                    className="w-full rounded-xl border border-gray-200 bg-[#fafbf9] px-4 py-3 text-sm text-gray-800 outline-none transition placeholder:text-gray-400 focus:border-[#064e3b] focus:ring-2 focus:ring-[#064e3b]/10"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="location" className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-[#064e3b]">
-                    City / Location *
-                  </label>
-                  <input
-                    id="location"
-                    name="location"
-                    type="text"
-                    required
-                    placeholder="e.g. Indiranagar, Bengaluru"
-                    className="w-full rounded-xl border border-gray-200 bg-[#fafbf9] px-4 py-3 text-sm text-gray-800 outline-none transition placeholder:text-gray-400 focus:border-[#064e3b] focus:ring-2 focus:ring-[#064e3b]/10"
-                  />
-                </div>
-              </div>
-
-              {/* 3. Service Required & Requirement Type */}
-              <div className="grid gap-5 sm:grid-cols-2">
-                <div>
-                  <label htmlFor="service" className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-[#064e3b]">
-                    Service Required *
-                  </label>
-                  <select
-                    id="service"
-                    name="service"
-                    required
-                    defaultValue=""
-                    className="w-full rounded-xl border border-gray-200 bg-[#fafbf9] px-4 py-3 text-sm text-gray-800 outline-none transition focus:border-[#064e3b] focus:ring-2 focus:ring-[#064e3b]/10"
-                  >
-                    <option value="" disabled>Select service</option>
-                    <option value="Housekeeping">Housekeeping</option>
-                    <option value="Cooking / Meal Support">Cooking / Meal Support</option>
-                    <option value="Elder Care">Elder Care</option>
-                    <option value="Child Care">Child Care</option>
-                    <option value="Laundry & Household Assistance">Laundry & Household Assistance</option>
-                    <option value="Corporate / Workplace Support">Corporate / Workplace Support</option>
-                    <option value="Driver / Errand Support">Driver / Errand Support</option>
-                    <option value="Multiple Services">Multiple Services</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label htmlFor="requirementType" className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-[#064e3b]">
-                    Type of Requirement
-                  </label>
-                  <select
-                    id="requirementType"
-                    name="requirementType"
-                    defaultValue="Full-Time"
-                    className="w-full rounded-xl border border-gray-200 bg-[#fafbf9] px-4 py-3 text-sm text-gray-800 outline-none transition focus:border-[#064e3b] focus:ring-2 focus:ring-[#064e3b]/10"
-                  >
-                    <option value="Full-Time">Full-Time (Live-in / 8-12 hrs)</option>
-                    <option value="Part-Time">Part-Time (1-4 hrs)</option>
-                    <option value="On-Demand / One-off">On-Demand / One-off</option>
-                  </select>
-                </div>
-              </div>
-
-              {/* 4. Preferred Start Date & Frequency/Duration */}
-              <div className="grid gap-5 sm:grid-cols-2">
-                <div>
-                  <label htmlFor="startDate" className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-[#064e3b]">
-                    Preferred Start Date
-                  </label>
-                  <input
-                    id="startDate"
-                    name="startDate"
-                    type="date"
-                    className="w-full rounded-xl border border-gray-200 bg-[#fafbf9] px-4 py-3 text-sm text-gray-800 outline-none transition focus:border-[#064e3b] focus:ring-2 focus:ring-[#064e3b]/10"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="frequency" className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-[#064e3b]">
-                    Frequency / Duration
-                  </label>
-                  <input
-                    id="frequency"
-                    name="frequency"
-                    type="text"
-                    placeholder="e.g. Daily, 3 Days/week, 6 Months"
-                    className="w-full rounded-xl border border-gray-200 bg-[#fafbf9] px-4 py-3 text-sm text-gray-800 outline-none transition placeholder:text-gray-400 focus:border-[#064e3b] focus:ring-2 focus:ring-[#064e3b]/10"
-                  />
-                </div>
-              </div>
-
-              {/* 5. Additional Requirements */}
-              <div>
-                <label htmlFor="additionalRequirements" className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-[#064e3b]">
-                  Additional Requirements
-                </label>
-                <textarea
-                  id="additionalRequirements"
-                  name="additionalRequirements"
-                  rows={3}
-                  placeholder="Mention any specific preferences, language requirements, or special care instructions..."
-                  className="w-full resize-none rounded-xl border border-gray-200 bg-[#fafbf9] px-4 py-3 text-sm text-gray-800 outline-none transition placeholder:text-gray-400 focus:border-[#064e3b] focus:ring-2 focus:ring-[#064e3b]/10"
-                />
-              </div>
-
-              {/* 6. Preferred Contact Method */}
-              <div>
-                <label className="mb-2 block text-xs font-semibold uppercase tracking-wider text-[#064e3b]">
-                  Preferred Contact Method
-                </label>
-                <div className="flex flex-wrap gap-4 text-sm text-gray-700">
-                  <label className="flex items-center gap-2 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="contactMethod"
-                      value="Phone Call"
-                      defaultChecked
-                      className="accent-[#064e3b]"
-                    />
-                    Phone Call
-                  </label>
-                  <label className="flex items-center gap-2 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="contactMethod"
-                      value="WhatsApp"
-                      className="accent-[#064e3b]"
-                    />
-                    WhatsApp
-                  </label>
-                  <label className="flex items-center gap-2 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="contactMethod"
-                      value="Email"
-                      className="accent-[#064e3b]"
-                    />
-                    Email
-                  </label>
-                </div>
-              </div>
-
-              {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={loading}
-                className="flex w-full items-center justify-center gap-2 rounded-full bg-[#064e3b] px-8 py-4 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:bg-[#0f7a5c] hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-50"
-              >
-                {loading ? (
-                  <>
-                    <Loader2 className="h-4 w-4 animate-spin" />
-                    Submitting Request...
-                  </>
-                ) : (
-                  "Submit Request →"
-                )}
+                Request a service
               </button>
+              <button
+                type="button"
+                onClick={() => setActiveTab("general")}
+                className={`text-[14px] font-semibold pb-3.5 mr-6 border-b-2 transition-colors cursor-pointer ${
+                  activeTab === "general"
+                    ? "text-[#1F4234] border-[#A8843C]"
+                    : "text-[#3E5E4F] border-transparent"
+                }`}
+              >
+                General enquiry
+              </button>
+            </div>
+          )}
 
-              <p className="text-center text-xs text-gray-400">
-                Our care coordinators will respond within 24 hours.
+          {/* Form Content */}
+          {!submitted ? (
+            activeTab === "service" ? (
+              <form onSubmit={(e) => handleSubmit(e, "service")} className="space-y-4.5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="flex flex-col gap-1.5">
+                    <label htmlFor="s-name" className="text-[12.5px] font-semibold text-[#1F4234]">Name</label>
+                    <input
+                      id="s-name"
+                      required
+                      placeholder="Your full name"
+                      className="font-sans text-[14px] p-[12px_14px] border border-[rgba(31,66,52,0.14)] rounded-[4px] bg-[#FAF6EC] text-[#1F4234] focus:border-[#A8843C] focus:outline-none"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label htmlFor="s-phone" className="text-[12.5px] font-semibold text-[#1F4234]">Phone number</label>
+                    <input
+                      id="s-phone"
+                      type="tel"
+                      required
+                      placeholder="+91"
+                      className="font-sans text-[14px] p-[12px_14px] border border-[rgba(31,66,52,0.14)] rounded-[4px] bg-[#FAF6EC] text-[#1F4234] focus:border-[#A8843C] focus:outline-none"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="flex flex-col gap-1.5">
+                    <label htmlFor="s-email" className="text-[12.5px] font-semibold text-[#1F4234]">Email</label>
+                    <input
+                      id="s-email"
+                      type="email"
+                      placeholder="you@email.com"
+                      className="font-sans text-[14px] p-[12px_14px] border border-[rgba(31,66,52,0.14)] rounded-[4px] bg-[#FAF6EC] text-[#1F4234] focus:border-[#A8843C] focus:outline-none"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label htmlFor="s-city" className="text-[12.5px] font-semibold text-[#1F4234]">City / Location</label>
+                    <input
+                      id="s-city"
+                      required
+                      placeholder="e.g. JP Nagar, Bengaluru"
+                      className="font-sans text-[14px] p-[12px_14px] border border-[rgba(31,66,52,0.14)] rounded-[4px] bg-[#FAF6EC] text-[#1F4234] focus:border-[#A8843C] focus:outline-none"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="flex flex-col gap-1.5">
+                    <label htmlFor="s-service" className="text-[12.5px] font-semibold text-[#1F4234]">Service required</label>
+                    <select
+                      id="s-service"
+                      required
+                      defaultValue=""
+                      className="font-sans text-[14px] p-[12px_14px] border border-[rgba(31,66,52,0.14)] rounded-[4px] bg-[#FAF6EC] text-[#1F4234] focus:border-[#A8843C] focus:outline-none"
+                    >
+                      <option value="" disabled>Select a service</option>
+                      <option>Housekeeping</option>
+                      <option>Cooking / Meal Support</option>
+                      <option>Elder Care</option>
+                    </select>
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label htmlFor="s-date" className="text-[12.5px] font-semibold text-[#1F4234]">Preferred start date</label>
+                    <input
+                      id="s-date"
+                      type="date"
+                      className="font-sans text-[14px] p-[12px_14px] border border-[rgba(31,66,52,0.14)] rounded-[4px] bg-[#FAF6EC] text-[#1F4234] focus:border-[#A8843C] focus:outline-none"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="flex flex-col gap-1.5">
+                    <label htmlFor="s-type" className="text-[12.5px] font-semibold text-[#1F4234]">Type of requirement</label>
+                    <input
+                      id="s-type"
+                      placeholder="e.g. daily, live-in, part-time"
+                      className="font-sans text-[14px] p-[12px_14px] border border-[rgba(31,66,52,0.14)] rounded-[4px] bg-[#FAF6EC] text-[#1F4234] focus:border-[#A8843C] focus:outline-none"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label htmlFor="s-freq" className="text-[12.5px] font-semibold text-[#1F4234]">Frequency / duration</label>
+                    <input
+                      id="s-freq"
+                      placeholder="e.g. 6 days/week, 3 months"
+                      className="font-sans text-[14px] p-[12px_14px] border border-[rgba(31,66,52,0.14)] rounded-[4px] bg-[#FAF6EC] text-[#1F4234] focus:border-[#A8843C] focus:outline-none"
+                    />
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-1.5">
+                  <label htmlFor="s-notes" className="text-[12.5px] font-semibold text-[#1F4234]">Additional requirements</label>
+                  <textarea
+                    id="s-notes"
+                    rows={3}
+                    placeholder="Anything specific we should know"
+                    className="font-sans text-[14px] p-[12px_14px] border border-[rgba(31,66,52,0.14)] rounded-[4px] bg-[#FAF6EC] text-[#1F4234] focus:border-[#A8843C] focus:outline-none resize-y min-h-[88px]"
+                  />
+                </div>
+
+                <div className="flex flex-col gap-2 pt-1 pb-2">
+                  <label className="text-[12.5px] font-semibold text-[#1F4234]">Preferred contact method</label>
+                  <div className="flex flex-wrap gap-4 text-[13.3px] text-[#3E5E4F]">
+                    <label className="flex items-center gap-2 cursor-pointer">
+                      <input type="radio" name="s-contact" defaultChecked className="accent-[#A8843C]" /> Phone call
+                    </label>
+                    <label className="flex items-center gap-2 cursor-pointer">
+                      <input type="radio" name="s-contact" className="accent-[#A8843C]" /> WhatsApp
+                    </label>
+                    <label className="flex items-center gap-2 cursor-pointer">
+                      <input type="radio" name="s-contact" className="accent-[#A8843C]" /> Email
+                    </label>
+                  </div>
+                </div>
+
+                <button type="submit" className="btn btn-forest w-full justify-center">
+                  Submit request
+                </button>
+              </form>
+            ) : (
+              <form onSubmit={(e) => handleSubmit(e, "general")} className="space-y-4.5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="flex flex-col gap-1.5">
+                    <label htmlFor="g-name" className="text-[12.5px] font-semibold text-[#1F4234]">Name</label>
+                    <input
+                      id="g-name"
+                      required
+                      placeholder="Your full name"
+                      className="font-sans text-[14px] p-[12px_14px] border border-[rgba(31,66,52,0.14)] rounded-[4px] bg-[#FAF6EC] text-[#1F4234] focus:border-[#A8843C] focus:outline-none"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label htmlFor="g-phone" className="text-[12.5px] font-semibold text-[#1F4234]">Phone number</label>
+                    <input
+                      id="g-phone"
+                      type="tel"
+                      required
+                      placeholder="+91"
+                      className="font-sans text-[14px] p-[12px_14px] border border-[rgba(31,66,52,0.14)] rounded-[4px] bg-[#FAF6EC] text-[#1F4234] focus:border-[#A8843C] focus:outline-none"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="flex flex-col gap-1.5">
+                    <label htmlFor="g-email" className="text-[12.5px] font-semibold text-[#1F4234]">Email</label>
+                    <input
+                      id="g-email"
+                      type="email"
+                      placeholder="you@email.com"
+                      className="font-sans text-[14px] p-[12px_14px] border border-[rgba(31,66,52,0.14)] rounded-[4px] bg-[#FAF6EC] text-[#1F4234] focus:border-[#A8843C] focus:outline-none"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label htmlFor="g-city" className="text-[12.5px] font-semibold text-[#1F4234]">City / Location</label>
+                    <input
+                      id="g-city"
+                      placeholder="e.g. Banashankari, Bengaluru"
+                      className="font-sans text-[14px] p-[12px_14px] border border-[rgba(31,66,52,0.14)] rounded-[4px] bg-[#FAF6EC] text-[#1F4234] focus:border-[#A8843C] focus:outline-none"
+                    />
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-1.5">
+                  <label htmlFor="g-subject" className="text-[12.5px] font-semibold text-[#1F4234]">Subject / requirement</label>
+                  <input
+                    id="g-subject"
+                    placeholder="What's this about?"
+                    className="font-sans text-[14px] p-[12px_14px] border border-[rgba(31,66,52,0.14)] rounded-[4px] bg-[#FAF6EC] text-[#1F4234] focus:border-[#A8843C] focus:outline-none"
+                  />
+                </div>
+
+                <div className="flex flex-col gap-1.5">
+                  <label htmlFor="g-message" className="text-[12.5px] font-semibold text-[#1F4234]">Message</label>
+                  <textarea
+                    id="g-message"
+                    rows={4}
+                    placeholder="Tell us more"
+                    className="font-sans text-[14px] p-[12px_14px] border border-[rgba(31,66,52,0.14)] rounded-[4px] bg-[#FAF6EC] text-[#1F4234] focus:border-[#A8843C] focus:outline-none resize-y min-h-[88px]"
+                  />
+                </div>
+
+                <button type="submit" className="btn btn-forest w-full justify-center">
+                  Send message
+                </button>
+              </form>
+            )
+          ) : (
+            <div className="text-center py-10">
+              <svg className="w-[46px] h-[46px] text-[#A8843C] mx-auto mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+                <path d="M5 13l4 4L19 7"/>
+              </svg>
+              <h3 className="font-serif text-[21px] text-[#1F4234] mb-2.5">We've got it from here.</h3>
+              <p className="text-[#3E5E4F] text-[14.5px] max-w-[38ch] mx-auto leading-relaxed">
+                {confirmMessage}
               </p>
-
-            </form>
-          </div>
-        </div>
-
-        {/* Trust Badges */}
-        <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
-          <div className="rounded-2xl bg-white p-5 text-center shadow-xs border border-gray-100">
-            <div className="text-lg font-semibold text-[#064e3b]">
-              Verified Staff
             </div>
-            <p className="mt-1 text-xs text-gray-500">
-              Rigorous background and reference checks
-            </p>
-          </div>
-
-          <div className="rounded-2xl bg-white p-5 text-center shadow-xs border border-gray-100">
-            <div className="text-lg font-semibold text-[#064e3b]">
-              Tailored Matching
-            </div>
-            <p className="mt-1 text-xs text-gray-500">
-              Matched strictly to your family’s routine
-            </p>
-          </div>
-
-          <div className="rounded-2xl bg-white p-5 text-center shadow-xs border border-gray-100">
-            <div className="text-lg font-semibold text-[#064e3b]">
-              Continuous Support
-            </div>
-            <p className="mt-1 text-xs text-gray-500">
-              Dedicated replacement & manager assistance
-            </p>
-          </div>
-        </div>
+          )}
+        </motion.div>
 
       </div>
     </section>
   );
 }
+
+export default Contact;

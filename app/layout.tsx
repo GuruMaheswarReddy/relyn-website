@@ -1,23 +1,17 @@
 import type { Metadata } from "next";
-import { Figtree, Geist_Mono, Syne } from "next/font/google";
+import { Fraunces, Public_Sans } from "next/font/google";
 import { siteConfig } from "@/constants/site";
 import IntroAnimation from "@/components/IntroAnimation";
 import "./globals.css";
 
-const syne = Syne({
-  variable: "--font-syne",
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
   subsets: ["latin"],
   display: "swap",
 });
 
-const figtree = Figtree({
-  variable: "--font-figtree",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const publicSans = Public_Sans({
+  variable: "--font-public-sans",
   subsets: ["latin"],
   display: "swap",
 });
@@ -26,15 +20,15 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
 
   title: {
-    default: `${siteConfig.name} | Digital Agency`,
+    default: "Relyn — Everything. Taken care of.",
     template: `%s | ${siteConfig.name}`,
   },
 
-  description: siteConfig.description,
+  description: "Trusted household support in Bengaluru — housekeeping, cooking and elder care.",
 
   openGraph: {
-    title: siteConfig.name,
-    description: siteConfig.description,
+    title: "Relyn — Everything. Taken care of.",
+    description: "Trusted household support in Bengaluru — housekeeping, cooking and elder care.",
     url: siteConfig.url,
     siteName: siteConfig.name,
     locale: siteConfig.locale,
@@ -43,8 +37,8 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: siteConfig.name,
-    description: siteConfig.description,
+    title: "Relyn — Everything. Taken care of.",
+    description: "Trusted household support in Bengaluru — housekeeping, cooking and elder care.",
   },
 };
 
@@ -56,9 +50,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${syne.variable} ${figtree.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${fraunces.variable} ${publicSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-sans">
+      <body className="min-h-full flex flex-col font-sans bg-[#FAF6EC] text-[#1F4234]">
         <IntroAnimation />
 
         {children}

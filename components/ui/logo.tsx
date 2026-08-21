@@ -19,7 +19,7 @@ export function Logo({
       href="/"
       className={cn(
         "group inline-flex items-center gap-2.5 transition-[color,opacity] duration-300 hover:opacity-90",
-        isDark ? "text-white" : "text-[#064E3B]",
+        isDark ? "text-white" : "text-[#021B30]",
         className
       )}
       aria-label="Relyn home"
@@ -30,15 +30,15 @@ export function Logo({
         className={cn(
           "relative grid h-9 w-9 place-items-center overflow-hidden rounded-full transition-colors duration-300",
           isDark
-            ? "bg-white text-[#064E3B]"
-            : "bg-[#064E3B] text-white"
+            ? "bg-white text-[#021B30]"
+            : "bg-[#021B30] text-white"
         )}
       >
         <span
           className={cn(
             "absolute inset-0",
             isDark
-              ? "bg-[radial-gradient(circle_at_30%_20%,rgba(6,78,59,0.25),transparent_55%)]"
+              ? "bg-[radial-gradient(circle_at_30%_20%,rgba(2,27,48,0.25),transparent_55%)]"
               : "bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.25),transparent_55%)]"
           )}
         />

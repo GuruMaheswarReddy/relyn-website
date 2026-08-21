@@ -4,12 +4,12 @@ import { cn } from "@/lib/utils";
 
 const variants = {
   primary:
-    "bg-ink text-white shadow-[0_12px_30px_-18px_rgba(11,18,32,0.65)] hover:bg-ink-soft",
+    "bg-[#021B30] text-white shadow-md hover:bg-[#825D34]",
   secondary:
-    "border border-ink/15 bg-white/55 text-ink backdrop-blur-md hover:bg-white/80",
-  ghost: "bg-transparent text-ink hover:bg-ink/5",
+    "border border-[#E1D6C9] bg-[#F2EDE6] text-[#021B30] hover:bg-white",
+  ghost: "bg-transparent text-[#021B30] hover:bg-[#F2EDE6]",
   accent:
-    "bg-accent text-accent-foreground shadow-[0_12px_30px_-16px_rgba(15,118,110,0.7)] hover:bg-accent-soft",
+    "bg-[#825D34] text-white shadow-md hover:bg-[#021B30]",
 } as const;
 
 const sizes = {

@@ -1,211 +1,97 @@
 "use client";
 
 import Link from "next/link";
-import { footerNav, socialLinks } from "@/constants/navigation";
-import { siteConfig } from "@/constants/site";
-import { Container } from "@/components/ui/container";
-import { Logo } from "@/components/ui/logo";
-import { SocialIcons } from "@/components/ui/social-icons";
-
-// Updated list of Relyn's 8 core housekeeping services
-const relynServices = [
-  {
-    title: "Regular Home Cleaning",
-    href: "/services#regular-home-cleaning",
-  },
-  {
-    title: "Deep Cleaning",
-    href: "/services#deep-cleaning",
-  },
-  {
-    title: "Kitchen Cleaning",
-    href: "/services#kitchen-cleaning",
-  },
-  {
-    title: "Bathroom Cleaning",
-    href: "/services#bathroom-cleaning",
-  },
-  {
-    title: "Dusting & Vacuuming",
-    href: "/services#dusting-vacuuming",
-  },
-  {
-    title: "Floor Cleaning",
-    href: "/services#floor-cleaning",
-  },
-  {
-    title: "Laundry & Ironing",
-    href: "/services#laundry-ironing",
-  },
-  {
-    title: "Bed & Linen Care",
-    href: "/services#bed-linen-care",
-  },
-];
+import { motion } from "framer-motion";
 
 export function Footer() {
-  const year = new Date().getFullYear();
-
   return (
-    <footer className="w-full border-t border-[#064e3b]/10 bg-[#F7F0D4] text-[#304035]">
-      <Container className="mx-auto max-w-[1400px] px-6 py-16 lg:px-12">
-
-        {/* Main Footer */}
-        <div className="grid gap-12 pb-14 lg:grid-cols-[1.4fr_0.8fr_0.9fr_1fr] lg:gap-14">
-
-          {/* BRAND */}
-          <div className="space-y-6">
-            <Logo tone="light" />
-
-            <p className="max-w-sm text-sm leading-7 text-[#687366]">
-              Relyn makes everyday life easier with trusted professionals
-              for housekeeping, cooking, child care, elder care and more.
-            </p>
-
-            {/* Trust Badge */}
-            <div className="inline-flex items-center gap-3 rounded-full border border-[#b8d6b2] bg-[#DBF5D6] px-4 py-2.5">
-              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#064e3b] text-xs text-white">
-                ✓
-              </span>
-
-              <span className="text-xs font-semibold text-[#064e3b]">
-                Trusted Home Services
-              </span>
+    <>
+      {/* FINAL CTA SECTION */}
+      <section className="text-center py-28 bg-[#FAF6EC]">
+        <div className="max-w-[1180px] mx-auto px-6 md:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <div className="label justify-center mb-3">Ready when you are</div>
+            <h2 className="text-[32px] sm:text-[42px] lg:text-[52px] font-serif leading-tight text-[#1F4234] mb-3.5">
+              Everything. Taken care of.
+            </h2>
+            <div className="font-serif italic text-[19px] text-[#A8843C] mb-8">
+              Your home. Our responsibility.
             </div>
-
-            {/* Social Icons */}
-            <SocialIcons
-              links={socialLinks}
-              iconClassName="border-[#b8d6b2] bg-white text-[#064e3b] hover:bg-[#064e3b] hover:border-[#064e3b] hover:text-white transition-all duration-200"
-            />
-          </div>
-
-          {/* QUICK LINKS */}
-          <nav aria-label="Footer Navigation">
-            <h3 className="mb-6 text-xs font-bold uppercase tracking-[0.2em] text-[#064e3b]">
-              Quick Links
-            </h3>
-
-            <ul className="space-y-4">
-              {footerNav.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="text-sm text-[#687366] transition-colors duration-200 hover:text-[#064e3b]"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          {/* OUR SERVICES */}
-          <nav aria-label="Relyn Services">
-            <h3 className="mb-6 text-xs font-bold uppercase tracking-[0.2em] text-[#064e3b]">
-              Our Services
-            </h3>
-
-            <ul className="space-y-3">
-              {relynServices.map((service) => (
-                <li key={service.title}>
-                  <Link
-                    href={service.href}
-                    className="group flex items-center text-sm text-[#687366] transition-colors duration-200 hover:text-[#064e3b]"
-                  >
-                    <span className="mr-2 opacity-0 transition-all duration-200 group-hover:translate-x-1 group-hover:opacity-100">
-                      →
-                    </span>
-
-                    <span>{service.title}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          {/* NEED A HAND */}
-          <div>
-            <h3 className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-[#064e3b]">
-              Need a Hand?
-            </h3>
-
-            <p className="mb-6 text-sm leading-6 text-[#687366]">
-              Tell us what you need and we&apos;ll help you find the right
-              service for your home.
-            </p>
-
-            {/* CTA */}
-            <Link
-              href="/contact"
-              className="group inline-flex w-full items-center justify-center rounded-full bg-[#064e3b] px-6 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#0f7a5c]"
-            >
-              Book a Service
-              <span className="ml-2 transition-transform duration-200 group-hover:translate-x-1">
-                →
-              </span>
-            </Link>
-
-            {/* Contact Information */}
-            <div className="mt-7 space-y-4">
-
-              {/* Contact Email */}
-              <div>
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#8f7d4d]">
-                  Contact
-                </p>
-
-                <a
-                  href="mailto:help@relyn.com"
-                  className="mt-1 block text-sm text-[#687366] transition-colors hover:text-[#064e3b]"
-                >
-                  help@relyn.com
-                </a>
-              </div>
-
-              {/* Service Area */}
-              <div>
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#8f7d4d]">
-                  Service Area
-                </p>
-
-                <p className="mt-1 max-w-xs text-sm leading-6 text-[#687366]">
-                  {siteConfig.address || "Serving families with care"}
-                </p>
-              </div>
-
+            <div className="flex flex-wrap justify-center gap-3.5">
+              <Link href="#contact" className="btn btn-gold">
+                Get started
+              </Link>
+              <Link href="#services" className="btn btn-ghost">
+                Explore services
+              </Link>
             </div>
-          </div>
+          </motion.div>
         </div>
+      </section>
 
-        {/* BOTTOM BAR */}
-        <div className="flex flex-col items-center justify-between gap-5 border-t border-[#064e3b]/10 pt-7 sm:flex-row">
+      {/* FOOTER */}
+      <footer className="bg-[#122E23] text-[rgba(250,246,236,0.75)] py-16 text-[14px]">
+        <div className="max-w-[1180px] mx-auto px-6 md:px-8">
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr] gap-10 pb-12 border-b border-[rgba(250,246,236,0.14)]">
+            
+            {/* Brand */}
+            <div>
+              <div className="flex items-center gap-2.5 mb-3.5">
+                <svg className="w-[26px] h-[22px] text-[#C6A15B]" viewBox="0 0 40 34" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M20 4 L36 17 L31 17 L31 30 L9 30 L9 17 L4 17 Z" />
+                </svg>
+                <span className="font-serif text-[21px] font-semibold text-[#FAF6EC] tracking-[0.06em]">RELYN</span>
+              </div>
+              <p className="max-w-[32ch] leading-relaxed text-[13.5px]">
+                Relyn India Pvt Ltd connects families with dependable household support — housekeeping, cooking and elder care — starting in JP Nagar and Banashankari, Bengaluru.
+              </p>
+            </div>
 
-          {/* Copyright */}
-          <p className="text-xs text-[#71806f]">
-            © {year} Relyn. All rights reserved.
-          </p>
+            {/* Services */}
+            <div>
+              <h5 className="text-[11px] font-bold tracking-[0.12em] uppercase text-[#C6A15B] mb-4">Services</h5>
+              <div className="space-y-2">
+                <Link href="#services" className="block text-[14px] hover:text-[#FAF6EC] transition-colors">Housekeeping</Link>
+                <Link href="#services" className="block text-[14px] hover:text-[#FAF6EC] transition-colors">Cooking / Meal Support</Link>
+                <Link href="#services" className="block text-[14px] hover:text-[#FAF6EC] transition-colors">Elder Care</Link>
+              </div>
+            </div>
 
-          {/* Legal Links */}
-          <div className="flex gap-6">
-            <Link
-              href="/privacy"
-              className="text-xs text-[#71806f] transition-colors hover:text-[#064e3b]"
-            >
-              Privacy Policy
-            </Link>
+            {/* Company */}
+            <div>
+              <h5 className="text-[11px] font-bold tracking-[0.12em] uppercase text-[#C6A15B] mb-4">Company</h5>
+              <div className="space-y-2">
+                <Link href="#about" className="block text-[14px] hover:text-[#FAF6EC] transition-colors">About Relyn</Link>
+                <Link href="#how" className="block text-[14px] hover:text-[#FAF6EC] transition-colors">How it works</Link>
+                <Link href="#contact" className="block text-[14px] hover:text-[#FAF6EC] transition-colors">Contact</Link>
+              </div>
+            </div>
 
-            <Link
-              href="/terms"
-              className="text-xs text-[#71806f] transition-colors hover:text-[#064e3b]"
-            >
-              Terms of Service
-            </Link>
+            {/* Coming Soon */}
+            <div>
+              <h5 className="text-[11px] font-bold tracking-[0.12em] uppercase text-[#C6A15B] mb-4">Coming soon</h5>
+              <div className="space-y-2">
+                <Link href="#services" className="block text-[14px] hover:text-[#FAF6EC] transition-colors">Child Care</Link>
+                <Link href="#services" className="block text-[14px] hover:text-[#FAF6EC] transition-colors">Laundry &amp; Assistance</Link>
+                <Link href="#services" className="block text-[14px] hover:text-[#FAF6EC] transition-colors">Corporate Support</Link>
+              </div>
+            </div>
+
+          </div>
+
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-6 text-[12.5px] text-[rgba(250,246,236,0.5)]">
+            <span>© 2026 Relyn India Pvt Ltd</span>
+            <span>Bengaluru, Karnataka</span>
           </div>
 
         </div>
-
-      </Container>
-    </footer>
+      </footer>
+    </>
   );
 }

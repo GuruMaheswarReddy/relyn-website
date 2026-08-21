@@ -51,15 +51,15 @@ export default function WebsiteMakersTeamSection() {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   return (
-    <section className="w-full bg-[#f8fafc] py-20 px-6 md:px-12 lg:px-20 font-sans">
+    <section className="w-full bg-[#FBF9F7] py-20 px-6 md:px-12 lg:px-20 font-sans">
       <div className="mx-auto max-w-[1400px]">
         {/* Header Section */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-20">
           <div>
-            <p className="text-[12px] font-bold tracking-[0.2em] uppercase text-[#ff6600] mb-3">
+            <p className="text-[12px] font-bold tracking-[0.2em] uppercase text-[#825D34] mb-3">
               THE WEBSITE MAKERS
             </p>
-            <h2 className="text-[36px] sm:text-[44px] lg:text-[48px] font-bold leading-[1.12] text-[#0038a8]">
+            <h2 className="text-[36px] sm:text-[44px] lg:text-[48px] font-bold leading-[1.12] text-[#021B30]">
               Meet The Visionaries <br className="hidden sm:block" />
               Behind Our Digital Innovation
             </h2>
@@ -67,7 +67,7 @@ export default function WebsiteMakersTeamSection() {
 
           <button
             type="button"
-            className="self-start md:self-auto rounded-full bg-[#ff6600] px-8 py-3.5 text-[14px] font-semibold text-white shadow-md transition-all hover:bg-[#e05500] hover:shadow-lg"
+            className="self-start md:self-auto rounded-full bg-[#825D34] px-8 py-3.5 text-[14px] font-semibold text-white shadow-md transition-all hover:bg-[#021B30] hover:shadow-lg"
           >
             Work With Us
           </button>
@@ -85,23 +85,23 @@ export default function WebsiteMakersTeamSection() {
                 onMouseLeave={() => setHoveredId(null)}
                 className="relative min-h-[520px] w-full cursor-pointer"
               >
-                {/* DEFAULT BRAND BLUE CARD STATE */}
+                {/* DEFAULT BRAND CARD STATE */}
                 {!isHovered && (
-                  <div className="flex h-full w-full flex-col justify-between rounded-[24px] bg-[#0038a8] p-8 transition-all duration-300 shadow-md">
+                  <div className="flex h-full w-full flex-col justify-between rounded-[24px] bg-[#021B30] p-8 transition-all duration-300 shadow-md">
                     <div>
                       <h3 className="text-[24px] font-bold leading-snug text-white">
                         {member.name}
                       </h3>
-                      <p className="mt-2 text-[12px] font-bold tracking-wider text-[#ff9955] uppercase">
+                      <p className="mt-2 text-[12px] font-bold tracking-wider text-[#C3BAAE] uppercase">
                         {member.role}
                       </p>
                     </div>
 
                     <div className="mt-auto">
-                      <p className="text-[13px] font-medium text-slate-200">
+                      <p className="text-[13px] font-medium text-[#E1D6C9]">
                         TAG: {member.tag}
                       </p>
-                      <p className="mt-3 text-[14px] leading-relaxed text-slate-100 font-normal">
+                      <p className="mt-3 text-[14px] leading-relaxed text-[#F2EDE6] font-normal">
                         {member.description}
                       </p>
                     </div>
@@ -128,7 +128,7 @@ export default function WebsiteMakersTeamSection() {
                       className="absolute inset-0 z-50 flex flex-col justify-end overflow-visible"
                     >
                       {/* Image Card Container */}
-                      <div className="absolute -top-12 inset-x-0 bottom-0 overflow-hidden rounded-[24px] bg-[#0b0f19] shadow-[0_20px_50px_rgba(0,56,168,0.3)]">
+                      <div className="absolute -top-12 inset-x-0 bottom-0 overflow-hidden rounded-[24px] bg-[#021B30] shadow-[0_20px_50px_rgba(2,27,48,0.3)]">
                         <Image
                           src={member.image}
                           alt={member.name}
@@ -143,24 +143,24 @@ export default function WebsiteMakersTeamSection() {
                         initial={{ y: 25, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: 0.08, duration: 0.25 }}
-                        className="relative z-10 m-3 rounded-[20px] bg-white/80 p-6 backdrop-blur-md border border-white/70 shadow-xl"
+                        className="relative z-10 m-3 rounded-[20px] bg-white/90 p-6 backdrop-blur-md border border-[#E1D6C9] shadow-xl"
                       >
-                        <h3 className="text-[20px] font-bold text-[#0038a8]">
+                        <h3 className="text-[20px] font-bold text-[#021B30]">
                           {member.name}
                         </h3>
-                        <p className="mt-1 text-[10px] font-bold tracking-wider text-[#ff6600] uppercase leading-tight">
+                        <p className="mt-1 text-[10px] font-bold tracking-wider text-[#825D34] uppercase leading-tight">
                           {member.role}
                         </p>
-                        <p className="mt-1 text-[11px] font-medium text-[#475569]">
+                        <p className="mt-1 text-[11px] font-medium text-[#525D5A]">
                           TAG: {member.tag}
                         </p>
 
-                        <div className="mt-4 border-t border-slate-300/50 pt-3">
-                          <p className="flex items-center gap-1.5 text-[12px] font-semibold text-[#0038a8]">
-                            <span className="text-[#ff6600]">🚀</span>{" "}
+                        <div className="mt-4 border-t border-[#E1D6C9] pt-3">
+                          <p className="flex items-center gap-1.5 text-[12px] font-semibold text-[#021B30]">
+                            <span className="text-[#825D34]">🚀</span>{" "}
                             Focus: {member.focusArea}
                           </p>
-                          <p className="mt-1 text-[10px] text-[#64748b] italic">
+                          <p className="mt-1 text-[10px] text-[#525D5A] italic">
                             Click card to connect
                           </p>
                         </div>

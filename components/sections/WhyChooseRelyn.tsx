@@ -1,116 +1,98 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ShieldCheck, ClockCheck, HeartHandshake, SmilePlus } from "lucide-react";
-
-const benefits = [
-  {
-    icon: ShieldCheck,
-    title: "Trust",
-    subtitle: "Vetted & Safe",
-    description:
-      "Dependable support you can feel completely comfortable bringing into your home.",
-  },
-  {
-    icon: ClockCheck,
-    title: "Reliability",
-    subtitle: "Always On Time",
-    description:
-      "Support you can count on, exactly when you need it, without standard delays.",
-  },
-  {
-    icon: HeartHandshake,
-    title: "Personal Care",
-    subtitle: "Thoughtful Touch",
-    description:
-      "A tailored, warm, and personal approach to handling your everyday household support.",
-  },
-  {
-    icon: SmilePlus,
-    title: "Peace of Mind",
-    subtitle: "Hassle-Free",
-    description:
-      "We manage all the intricate details start-to-finish so you don't have to stress.",
-  },
-];
 
 export default function WhyChooseRelyn() {
   return (
-    <section className="relative overflow-hidden bg-[#DBF5D6] px-6 py-12 sm:px-10 sm:py-16 lg:px-16">
-      {/* Background Subtle Accents */}
-      <div className="pointer-events-none absolute -left-16 -top-16 h-60 w-60 rounded-full bg-[#52784c]/5 blur-3xl" />
-      <div className="pointer-events-none absolute -right-16 -bottom-16 h-60 w-60 rounded-full bg-[#52784c]/5 blur-3xl" />
-
-      <div className="mx-auto max-w-7xl">
+    <section className="bg-[#EEF1E8] py-20 lg:py-24" id="why">
+      <div className="max-w-[1180px] mx-auto px-6 md:px-8">
 
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.6 }}
-          className="mb-10 text-center"
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="max-w-[640px] mb-12"
         >
-          <span className="mb-2 inline-block rounded-full bg-[#52784c]/10 px-3.5 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#3e5d38]">
-            Why Relyn
-          </span>
-
-          <h2 className="font-[var(--font-syne)] text-2xl font-medium tracking-tight text-[#29372c] sm:text-3xl md:text-4xl">
-            Why families choose us
+          <div className="label mb-3">Why Relyn</div>
+          <h2 className="text-[28px] sm:text-[36px] lg:text-[40px] font-serif leading-[1.14] text-[#1F4234]">
+            Support that feels like peace of mind, not a task ticked off.
           </h2>
-
-          <div className="mx-auto mt-3 flex items-center justify-center gap-2.5">
-            <span className="h-px w-10 bg-[#8aaa83]" />
-            <span className="h-1.5 w-1.5 rounded-full bg-[#648a5d]" />
-            <span className="h-px w-10 bg-[#8aaa83]" />
-          </div>
+          <p className="mt-4 text-[16px] text-[#3E5E4F] max-w-[54ch]">
+            When someone becomes part of your daily routine, it should never feel uncertain. Here's what that looks like in practice.
+          </p>
         </motion.div>
 
-        {/* 4 Pillars Benefits Grid */}
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {benefits.map((benefit, index) => {
-            const Icon = benefit.icon;
+        {/* 4 Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[22px]">
 
-            return (
-              <motion.div
-                key={benefit.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{
-                  duration: 0.5,
-                  delay: index * 0.1,
-                }}
-                className="group relative z-10 flex flex-col items-center rounded-2xl border border-[#9fc49a]/60 bg-white/70 p-6 text-center backdrop-blur-sm transition-all duration-300 hover:border-[#648a5d] hover:bg-white hover:shadow-lg hover:shadow-[#52784c]/10"
-              >
-                {/* Icon Badge */}
-                <motion.div
-                  whileHover={{ scale: 1.08, rotate: -2 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 15 }}
-                  className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl border border-[#9fc49a]/50 bg-[#f4fbf3] text-[#40623a] shadow-xs transition-colors group-hover:bg-[#40623a] group-hover:text-white"
-                >
-                  <Icon size={26} strokeWidth={1.5} />
-                </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="bg-white rounded-[6px] p-8 shadow-[0_1px_0_rgba(31,66,52,0.14)]"
+          >
+            <svg className="w-8 h-8 text-[#A8843C] mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+              <path d="M12 3l7 3v6c0 5-3 8-7 9-4-1-7-4-7-9V6l7-3z" />
+            </svg>
+            <h3 className="font-serif text-[18px] text-[#1F4234] mb-2.5">Trust</h3>
+            <p className="text-[13.8px] text-[#3E5E4F] leading-relaxed">
+              Dependable support you feel comfortable bringing into your home.
+            </p>
+          </motion.div>
 
-                {/* Subtitle Pill */}
-                <span className="mb-1 text-[10px] font-bold uppercase tracking-wider text-[#648a5d]">
-                  {benefit.subtitle}
-                </span>
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="bg-white rounded-[6px] p-8 shadow-[0_1px_0_rgba(31,66,52,0.14)]"
+          >
+            <svg className="w-8 h-8 text-[#A8843C] mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+              <path d="M12 21s-7-4.6-9.5-9C.7 8.2 2.5 4 6.5 4c2 0 3.6 1.2 5.5 3.5C13.9 5.2 15.5 4 17.5 4 21.5 4 23.3 8.2 21.5 12 19 16.4 12 21 12 21z" />
+            </svg>
+            <h3 className="font-serif text-[18px] text-[#1F4234] mb-2.5">Care</h3>
+            <p className="text-[13.8px] text-[#3E5E4F] leading-relaxed">
+              A thoughtful, personal approach to everyday support — not just a job done.
+            </p>
+          </motion.div>
 
-                {/* Title */}
-                <h3 className="font-[var(--font-figtree)] text-lg font-semibold text-[#29372c] group-hover:text-[#40623a]">
-                  {benefit.title}
-                </h3>
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="bg-white rounded-[6px] p-8 shadow-[0_1px_0_rgba(31,66,52,0.14)]"
+          >
+            <svg className="w-8 h-8 text-[#A8843C] mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+              <path d="M12 8v5l3 3M12 3a9 9 0 100 18 9 9 0 000-18z" />
+            </svg>
+            <h3 className="font-serif text-[18px] text-[#1F4234] mb-2.5">Reliability</h3>
+            <p className="text-[13.8px] text-[#3E5E4F] leading-relaxed">
+              Support you can count on, consistently, when you actually need it.
+            </p>
+          </motion.div>
 
-                {/* Description */}
-                <p className="mt-2 text-xs leading-relaxed text-[#526052] sm:text-sm">
-                  {benefit.description}
-                </p>
-              </motion.div>
-            );
-          })}
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="bg-white rounded-[6px] p-8 shadow-[0_1px_0_rgba(31,66,52,0.14)]"
+          >
+            <svg className="w-8 h-8 text-[#A8843C] mb-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+              <path d="M4 20c1-4 4-6 8-6s7 2 8 6M12 12a4 4 0 100-8 4 4 0 000 8z" />
+              <path d="M19 4l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2z" />
+            </svg>
+            <h3 className="font-serif text-[18px] text-[#1F4234] mb-2.5">Peace of mind</h3>
+            <p className="text-[13.8px] text-[#3E5E4F] leading-relaxed">
+              We take care of the details, so you don't have to think twice.
+            </p>
+          </motion.div>
+
         </div>
-
       </div>
     </section>
   );

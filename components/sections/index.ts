@@ -5,3 +5,5 @@ export { default as Products } from "./Products";
 export { default as ServicesShowcase } from "./ServicesShowcase";
 export { default as Reviews } from "./Reviews";
 export { default as Contact } from "./Contact";
+export { PhotoReel } from "./PhotoReel";
+

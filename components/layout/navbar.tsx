@@ -1,207 +1,111 @@
 "use client";
 
-import { useEffect, useId, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
-import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { mainNav } from "@/constants/navigation";
-import { useScrolled } from "@/hooks/use-scrolled";
-import { cn } from "@/lib/utils";
-import { ButtonLink } from "@/components/ui/button";
-import { Container } from "@/components/ui/container";
-import { Logo } from "@/components/ui/logo";
 
 export function Navbar() {
-  const scrolled = useScrolled(80);
   const [open, setOpen] = useState(false);
-  const menuId = useId();
-
-  useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [open]);
-
-  useEffect(() => {
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setOpen(false);
-      }
-    };
-
-    window.addEventListener("keydown", onKeyDown);
-
-    return () => {
-      window.removeEventListener("keydown", onKeyDown);
-    };
-  }, []);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50">
-
-      {/* Skip to content */}
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-[#064E3B] focus:px-4 focus:py-2 focus:text-sm focus:text-white"
-      >
-        Skip to content
-      </a>
-
-      {/* Navbar */}
-      <div
-        className={cn(
-          "w-full transition-all duration-300 ease-out",
-          scrolled
-            ? "border-b border-[#064E3B]/10 bg-white shadow-sm"
-            : "border-b border-transparent bg-transparent"
-        )}
-      >
-        <Container className="flex h-20 max-w-[1400px] items-center justify-between gap-6">
-
-          {/* Relyn Logo */}
-          <Logo
-            tone={scrolled ? "light" : "dark"}
-            className={cn(
-              "transition-colors duration-300",
-              !scrolled && "text-white"
-            )}
-          />
-
-          {/* Desktop Navigation */}
-          <nav
-            aria-label="Primary"
-            className="hidden items-center gap-8 md:flex"
-          >
-            {mainNav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  "text-[12px] font-bold uppercase tracking-[0.18em] transition-colors duration-200",
-                  scrolled
-                    ? "text-[#064E3B] hover:text-[#0F7A5C]"
-                    : "text-white hover:text-[#9FCDBE]"
-                )}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-
-          {/* Book a Service Button */}
-          <div className="hidden items-center gap-3 md:flex">
-            <ButtonLink
-              href="/contact"
-              className={cn(
-                "h-11 rounded-full px-7 text-[12px] font-bold uppercase tracking-[0.15em] transition-all duration-300",
-                scrolled
-                  ? "border border-[#064E3B] bg-[#064E3B] text-white hover:bg-[#0F7A5C]"
-                  : "border border-white bg-white text-[#064E3B] hover:border-[#064E3B] hover:bg-[#064E3B] hover:text-white"
-              )}
-            >
-              BOOK A SERVICE
-            </ButtonLink>
+    <header className="absolute top-0 left-0 right-0 z-50 bg-transparent pt-4 lg:pt-6">
+      <nav className="max-w-[1360px] mx-auto px-6 md:px-10 lg:px-16 flex items-center justify-between h-[75px]">
+        {/* Brand Logo & Subtitle */}
+        <Link href="#top" className="flex items-center gap-3.5 group">
+          <div className="w-10 h-10 relative shrink-0">
+            <svg viewBox="0 0 60 60" fill="none" className="w-full h-full">
+              <path
+                d="M30 8 L48 24 L42 24 L42 46 L18 46 L18 24 L12 24 Z"
+                stroke="#021B30"
+                strokeWidth="3.2"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <circle cx="30" cy="27" r="4" fill="#825D34" />
+              <path
+                d="M22 42 C22 35 38 35 38 42"
+                stroke="#021B30"
+                strokeWidth="2.5"
+                fill="none"
+                strokeLinecap="round"
+              />
+            </svg>
           </div>
+          <div className="flex flex-col">
+            <span className="font-serif text-[24px] font-bold tracking-tight text-[#021B30] leading-none">
+              Relyn
+            </span>
+            <span className="text-[8.5px] font-bold uppercase tracking-[0.25em] text-[#525D5A] mt-1">
+              — TAKEN CARE OF. —
+            </span>
+          </div>
+        </Link>
 
-          {/* Mobile Menu Button */}
-          <button
-            type="button"
-            className={cn(
-              "inline-flex h-10 w-10 items-center justify-center rounded-full border transition-colors duration-200 md:hidden",
-              scrolled
-                ? "border-[#064E3B]/20 bg-white text-[#064E3B]"
-                : "border-white/30 bg-white/10 text-white backdrop-blur-md"
-            )}
-            aria-expanded={open}
-            aria-controls={menuId}
-            aria-label={open ? "Close menu" : "Open menu"}
-            onClick={() => setOpen((value) => !value)}
-          >
-            {open ? (
-              <X className="h-5 w-5" />
-            ) : (
-              <Menu className="h-5 w-5" />
-            )}
-          </button>
-        </Container>
-      </div>
-
-      {/* Mobile Drawer */}
-      <AnimatePresence>
-        {open ? (
-          <motion.div
-            id={menuId}
-            role="dialog"
-            aria-modal="true"
-            aria-label="Mobile navigation"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 md:hidden"
-          >
-            {/* Overlay */}
-            <button
-              type="button"
-              aria-label="Close menu overlay"
-              className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-              onClick={() => setOpen(false)}
-            />
-
-            {/* Menu */}
-            <motion.nav
-              initial={{ y: -16, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -12, opacity: 0 }}
-              transition={{
-                duration: 0.25,
-                ease: "easeOut",
-              }}
-              className="absolute inset-x-0 top-20 border-b border-[#064E3B]/10 bg-white p-6 shadow-xl"
-              aria-label="Mobile"
+        {/* Desktop Links floating on top of background photo */}
+        <div className="hidden md:flex items-center gap-9 text-[15px] font-medium text-[#525D5A]">
+          {mainNav.map((item, idx) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="relative py-1 hover:text-[#021B30] transition-colors group"
             >
-              <ul className="flex flex-col gap-3">
-                {mainNav.map((item, index) => (
-                  <motion.li
-                    key={item.href}
-                    initial={{
-                      opacity: 0,
-                      x: -8,
-                    }}
-                    animate={{
-                      opacity: 1,
-                      x: 0,
-                    }}
-                    transition={{
-                      delay: 0.03 * index,
-                      duration: 0.2,
-                    }}
-                  >
-                    <Link
-                      href={item.href}
-                      className="block py-2 text-[13px] font-bold uppercase tracking-[0.18em] text-[#064E3B] transition-colors hover:text-[#0F7A5C]"
-                      onClick={() => setOpen(false)}
-                    >
-                      {item.label}
-                    </Link>
-                  </motion.li>
-                ))}
-              </ul>
+              <span>{item.label}</span>
+              {idx === 0 ? (
+                <span className="absolute left-0 right-0 bottom-[-4px] h-[2px] bg-[#021B30] rounded-full" />
+              ) : (
+                <span className="absolute left-0 right-0 bottom-[-4px] h-[2px] bg-[#021B30] scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-200 rounded-full" />
+              )}
+            </Link>
+          ))}
+        </div>
 
-              {/* Mobile CTA */}
-              <div className="mt-6 border-t border-[#064E3B]/10 pt-6">
-                <ButtonLink
-                  href="/contact"
-                  className="h-11 w-full justify-center rounded-full bg-[#064E3B] text-[12px] font-bold uppercase tracking-[0.15em] text-white transition-all hover:bg-[#0F7A5C]"
-                >
-                  BOOK A SERVICE
-                </ButtonLink>
-              </div>
-            </motion.nav>
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
+        {/* Desktop CTA Button */}
+        <div className="hidden md:block">
+          <Link
+            href="#contact"
+            className="inline-flex items-center justify-center bg-[#021B30] hover:bg-[#0b2d4b] text-[#FBF9F7] px-6 py-2.5 rounded-full text-[14px] font-semibold shadow-md transition-all duration-200"
+          >
+            Book a Service
+          </Link>
+        </div>
+
+        {/* Mobile menu button */}
+        <button
+          type="button"
+          onClick={() => setOpen(!open)}
+          className="md:hidden p-2 text-[#021B30]"
+          aria-label="Toggle menu"
+        >
+          {open ? <X size={26} /> : <Menu size={26} />}
+        </button>
+      </nav>
+
+      {/* Mobile Menu */}
+      {open && (
+        <div className="md:hidden bg-[#FBF9F7]/95 backdrop-blur-md px-6 py-4 space-y-3 border-b border-[#021B30]/10">
+          {mainNav.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={() => setOpen(false)}
+              className="block text-sm font-medium text-[#021B30] py-1.5"
+            >
+              {item.label}
+            </Link>
+          ))}
+          <div className="pt-2">
+            <Link
+              href="#contact"
+              onClick={() => setOpen(false)}
+              className="inline-flex items-center justify-center w-full bg-[#021B30] text-[#FBF9F7] py-3 rounded-full text-sm font-semibold"
+            >
+              Book a Service
+            </Link>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

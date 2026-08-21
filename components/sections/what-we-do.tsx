@@ -3,225 +3,244 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Sparkles, Clock, ArrowRight, CheckCircle2 } from "lucide-react";
-
-const EASE = [0.22, 1, 0.36, 1] as const;
-
-const activeServices = [
-  {
-    title: "Housekeeping",
-    slug: "house-keeping",
-    image: "/services/HouseKeeping.jpg",
-    url: "/services/house-keeping",
-    bullets: [
-      "Home cleaning",
-      "General household upkeep",
-      "Organisation and assistance",
-    ],
-  },
-  {
-    title: "Cooking / Meal Support",
-    slug: "cooking",
-    image: "/services/Cooking.jpg",
-    url: "/services/cooking",
-    bullets: [
-      "Everyday cooking",
-      "Meal preparation",
-      "Kitchen assistance",
-    ],
-  },
-  {
-    title: "Elder Care",
-    slug: "elder-care",
-    image: "/services/Elder_care.jpg",
-    url: "/services/elder-care",
-    bullets: [
-      "Day-to-day assistance",
-      "Companionship",
-      "Support for elderly family members",
-    ],
-  },
-];
-
-const comingSoonServices = [
-  {
-    title: "Child Care",
-    slug: "child-care",
-    tagline: "Trusted childcare and everyday support for families.",
-  },
-  {
-    title: "Laundry & Household Assistance",
-    slug: "laundry-household-assistance",
-    tagline: "Laundry, ironing, folding and other routine household assistance.",
-  },
-  {
-    title: "Corporate / Workplace Support",
-    slug: "corporate-workplace-support",
-    tagline: "Reliable support services for offices and workplaces.",
-  },
-  {
-    title: "Driver / Errand Support",
-    subtitle: "(Permanent placement)",
-    slug: "driver-errand-support",
-    tagline: "Driver assistance, local errands, pick-up/drop-off and other day-to-day requirements.",
-  },
-];
 
 export function WhatWeDo() {
   return (
-    <section
-      id="services"
-      aria-labelledby="our-services-heading"
-      className="bg-[#F8FAFC] py-20 text-[#0F172A] sm:py-28 lg:py-32"
-    >
-      <div className="mx-auto w-full max-w-[1360px] px-6 sm:px-8 lg:px-12">
+    <section className="py-24" id="services">
+      <div className="max-w-[1180px] mx-auto px-6 md:px-8">
+
         {/* Section Header */}
-        <div className="flex items-end justify-between gap-4 border-b border-[#DDE1E6] pb-8">
-          <div>
-            <span className="mb-2 inline-block rounded-full bg-[#094B3D]/10 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-[#094B3D]">
-              Core Offerings
-            </span>
-            <h2
-              id="our-services-heading"
-              className="font-[var(--font-syne)] text-[36px] font-medium leading-none tracking-tight text-[#094B3D] sm:text-[52px] lg:text-[60px]"
-            >
-              Our Services
-            </h2>
-          </div>
-          <p className="hidden shrink-0 pb-1 text-[12px] font-semibold uppercase tracking-[0.25em] text-[#094B3D] sm:block">
-            Tailored For Your Home
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="max-w-[640px] mb-12"
+        >
+          <div className="label mb-3">What we offer</div>
+          <h2 className="text-[30px] sm:text-[38px] lg:text-[40px] font-serif leading-[1.14] text-[#1F4234]">
+            Three ways Relyn looks after your home.
+          </h2>
+          <p className="mt-4 text-[16px] text-[#3E5E4F] max-w-[54ch]">
+            Every professional is matched to one role specifically, understood, briefed and arranged around your household's actual routine.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Active Launch Services (3 Column Grid) */}
-        <div className="mt-12">
-          <ul className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            {activeServices.map((service, index) => {
-              const number = String(index + 1).padStart(2, "0");
+        {/* 3 Main Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-[70px]">
 
-              return (
-                <motion.li
-                  key={service.slug}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{
-                    duration: 0.55,
-                    ease: EASE,
-                    delay: index * 0.1,
-                  }}
-                  className="flex"
-                >
-                  <Link href={service.url} className="group relative flex w-full flex-col justify-between overflow-hidden rounded-2xl border border-[#DDE1E6] bg-white p-5 transition-all duration-300 hover:bg-[#F4F8F6] hover:shadow-xl hover:shadow-[#094B3D]/10">
-                    {/* Animated Borders on Hover */}
-                    <span className="absolute right-0 top-0 h-[2px] w-0 bg-[#094B3D] transition-all duration-500 ease-[cubic-bezier(.22,1,.36,1)] group-hover:w-full" />
-                    <span className="absolute left-0 top-0 h-0 w-[2px] bg-[#094B3D] transition-all delay-150 duration-500 ease-[cubic-bezier(.22,1,.36,1)] group-hover:h-full" />
-                    <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-[#094B3D] transition-all delay-300 duration-500 ease-[cubic-bezier(.22,1,.36,1)] group-hover:w-full" />
-                    <span className="absolute bottom-0 right-0 h-0 w-[2px] bg-[#094B3D] transition-all delay-[450ms] duration-500 ease-[cubic-bezier(.22,1,.36,1)] group-hover:h-full" />
+          {/* Card 1: Housekeeping */}
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="group bg-white border border-[rgba(31,66,52,0.14)] rounded-[8px] p-[36px_30px] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_44px_-28px_rgba(18,46,35,0.28)]"
+          >
+            <svg className="w-[44px] h-[44px] text-[#1F4234] mb-6" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.6">
+              <path d="M14 40 L26 12" strokeLinecap="round" />
+              <path d="M26 12 C29 8 35 8 38 12 C34 13 30 17 28 22 L20 34 Z" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M10 40 h14" strokeLinecap="round" />
+            </svg>
 
-                    <div>
-                      {/* Service Image Container */}
-                      <div className="relative flex h-[240px] w-full items-center justify-center overflow-hidden rounded-xl bg-slate-100 sm:h-[260px]">
-                        {service.image ? (
-                          <Image
-                            src={service.image}
-                            alt={service.title}
-                            fill
-                            className="object-cover transition-transform duration-500 group-hover:scale-105"
-                            sizes="(max-width: 768px) 100vw, 33vw"
-                          />
-                        ) : (
-                          <span className="text-4xl font-bold text-slate-300">
-                            {number}
-                          </span>
-                        )}
-                        <div className="absolute left-3 top-3 rounded-md bg-white/90 px-2.5 py-1 text-xs font-bold text-[#094B3D] shadow-xs backdrop-blur-xs">
-                          {number}
-                        </div>
-                      </div>
+            <div className="relative w-full h-[205px] overflow-hidden rounded-[8px] border border-[rgba(31,66,52,0.14)] mb-6">
+              <Image
+                src="/services/HouseKeeping.jpg"
+                alt="Housekeeping"
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
 
-                      {/* Details & Bullet Points */}
-                      <div className="pb-2 pt-5">
-                        <h3 className="text-center text-[20px] font-bold tracking-tight text-[#094B3D] sm:text-[22px]">
-                          {service.title}
-                        </h3>
-                        <ul className="mt-4 space-y-2 text-left">
-                          {service.bullets.map((bullet, i) => (
-                            <li key={i} className="flex items-start gap-2 text-xs text-[#475569] sm:text-sm">
-                              <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-[#094B3D]" />
-                              <span>{bullet}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
+            <h3 className="font-serif text-[21px] text-[#1F4234] mb-2.5">Housekeeping</h3>
+            <p className="text-[14.3px] text-[#3E5E4F] mb-4 leading-relaxed">
+              Everyday cleaning and household upkeep, organised around how your home actually runs.
+            </p>
 
-                    {/* Navigation Action Button */}
-                    <div className="mt-6 flex items-center justify-center">
-                      <span className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-[#094B3D] bg-[#094B3D]/5 px-5 py-2.5 text-xs font-bold text-[#094B3D] transition-all duration-300 group-hover:bg-[#094B3D] group-hover:text-white group-hover:shadow-md">
-                        Explore Service
-                        <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
-                      </span>
-                    </div>
-                  </Link>
-                </motion.li>
-              );
-            })}
-          </ul>
+            <ul className="space-y-2 mb-5">
+              <li className="text-[13.3px] text-[#3E5E4F] flex items-start gap-2">
+                <span className="w-[5px] h-[5px] rounded-full bg-[#A8843C] mt-[7px] shrink-0" />
+                Home cleaning
+              </li>
+              <li className="text-[13.3px] text-[#3E5E4F] flex items-start gap-2">
+                <span className="w-[5px] h-[5px] rounded-full bg-[#A8843C] mt-[7px] shrink-0" />
+                General household upkeep
+              </li>
+              <li className="text-[13.3px] text-[#3E5E4F] flex items-start gap-2">
+                <span className="w-[5px] h-[5px] rounded-full bg-[#A8843C] mt-[7px] shrink-0" />
+                Organisation &amp; assistance
+              </li>
+            </ul>
+
+            <Link href="#contact" className="text-[13.5px] font-semibold text-[#A8843C] inline-flex items-center gap-1.5 hover:underline group/link">
+              Request housekeeping
+              <svg className="w-3.5 h-3.5 transition-transform duration-200 group-hover/link:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </Link>
+          </motion.div>
+
+          {/* Card 2: Cooking / Meal Support */}
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="group bg-white border border-[rgba(31,66,52,0.14)] rounded-[8px] p-[36px_30px] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_44px_-28px_rgba(18,46,35,0.28)]"
+          >
+            <svg className="w-[44px] h-[44px] text-[#1F4234] mb-6" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.6">
+              <path d="M10 24 a14 10 0 0 0 28 0 Z" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M8 24 h32" strokeLinecap="round" />
+              <path d="M18 16 c0 -4 -3 -4 -3 -8 M24 16 c0 -4 -3 -4 -3 -8 M30 16 c0 -4 -3 -4 -3 -8" strokeLinecap="round" />
+            </svg>
+
+            <div className="relative w-full h-[205px] overflow-hidden rounded-[8px] border border-[rgba(31,66,52,0.14)] mb-6">
+              <Image
+                src="/services/Cooking.jpg"
+                alt="Cooking / Meal Support"
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+
+            <h3 className="font-serif text-[21px] text-[#1F4234] mb-2.5">Cooking / Meal Support</h3>
+            <p className="text-[14.3px] text-[#3E5E4F] mb-4 leading-relaxed">
+              Everyday cooking and meal preparation, cooked fresh to your family's taste.
+            </p>
+
+            <ul className="space-y-2 mb-5">
+              <li className="text-[13.3px] text-[#3E5E4F] flex items-start gap-2">
+                <span className="w-[5px] h-[5px] rounded-full bg-[#A8843C] mt-[7px] shrink-0" />
+                Everyday cooking
+              </li>
+              <li className="text-[13.3px] text-[#3E5E4F] flex items-start gap-2">
+                <span className="w-[5px] h-[5px] rounded-full bg-[#A8843C] mt-[7px] shrink-0" />
+                Meal preparation
+              </li>
+              <li className="text-[13.3px] text-[#3E5E4F] flex items-start gap-2">
+                <span className="w-[5px] h-[5px] rounded-full bg-[#A8843C] mt-[7px] shrink-0" />
+                Kitchen assistance
+              </li>
+            </ul>
+
+            <Link href="#contact" className="text-[13.5px] font-semibold text-[#A8843C] inline-flex items-center gap-1.5 hover:underline group/link">
+              Request meal support
+              <svg className="w-3.5 h-3.5 transition-transform duration-200 group-hover/link:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </Link>
+          </motion.div>
+
+          {/* Card 3: Elder Care */}
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="group bg-white border border-[rgba(31,66,52,0.14)] rounded-[8px] p-[36px_30px] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_44px_-28px_rgba(18,46,35,0.28)]"
+          >
+            <svg className="w-[44px] h-[44px] text-[#1F4234] mb-6" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.6">
+              <circle cx="18" cy="12" r="5" />
+              <path d="M10 30 c0 -8 6 -12 8 -12 s8 4 8 12" strokeLinecap="round" />
+              <path d="M26 24 l7 -3 c2 -1 4 1 3 3 l-5 8 c-1 2 -3 3 -5 3 h-8" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+
+            <div className="relative w-full h-[205px] overflow-hidden rounded-[8px] border border-[rgba(31,66,52,0.14)] mb-6">
+              <Image
+                src="/services/Elder_care.jpg"
+                alt="Elder Care"
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+
+            <h3 className="font-serif text-[21px] text-[#1F4234] mb-2.5">Elder Care</h3>
+            <p className="text-[14.3px] text-[#3E5E4F] mb-4 leading-relaxed">
+              Day-to-day assistance and companionship, tailored to your family's routine.
+            </p>
+
+            <ul className="space-y-2 mb-5">
+              <li className="text-[13.3px] text-[#3E5E4F] flex items-start gap-2">
+                <span className="w-[5px] h-[5px] rounded-full bg-[#A8843C] mt-[7px] shrink-0" />
+                Day-to-day assistance
+              </li>
+              <li className="text-[13.3px] text-[#3E5E4F] flex items-start gap-2">
+                <span className="w-[5px] h-[5px] rounded-full bg-[#A8843C] mt-[7px] shrink-0" />
+                Companionship
+              </li>
+              <li className="text-[13.3px] text-[#3E5E4F] flex items-start gap-2">
+                <span className="w-[5px] h-[5px] rounded-full bg-[#A8843C] mt-[7px] shrink-0" />
+                Support for elderly family members
+              </li>
+            </ul>
+
+            <Link href="#contact" className="text-[13.5px] font-semibold text-[#A8843C] inline-flex items-center gap-1.5 hover:underline group/link">
+              Request elder care
+              <svg className="w-3.5 h-3.5 transition-transform duration-200 group-hover/link:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </Link>
+          </motion.div>
+
         </div>
 
         {/* Coming Soon Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-16 rounded-3xl border border-[#DDE1E6] bg-linear-to-b from-white to-[#F1F5F9] p-6 sm:p-10"
-        >
-          <div className="mb-8 flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-center">
-            <div>
-              <div className="flex items-center gap-2 text-[#094B3D]">
-                <Clock size={18} className="animate-pulse" />
-                <span className="text-xs font-bold uppercase tracking-wider">
-                  Future Phases
-                </span>
-              </div>
-              <h3 className="mt-1 text-2xl font-bold text-[#0F172A] sm:text-3xl">
-                Coming Soon
-              </h3>
-            </div>
-            <p className="max-w-md text-xs text-[#64748B] sm:text-sm">
-              The following services are planned for future phases of Relyn and will be available shortly.
-            </p>
+        <div>
+          <div className="flex items-baseline gap-3.5 mb-6">
+            <div className="label m-0">Coming soon</div>
+            <h3 className="font-serif italic text-[20px] text-[#3E5E4F]">More support, on the way.</h3>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {comingSoonServices.map((service) => (
-              <div
-                key={service.slug}
-                className="group relative flex flex-col justify-between overflow-hidden rounded-xl border border-[#E2E8F0] bg-white p-5 transition-all duration-300 hover:border-[#094B3D]/30 hover:shadow-md"
-              >
-                <div>
-                  <div className="mb-2 flex items-center justify-between gap-2">
-                    <span className="rounded-full bg-[#094B3D]/10 px-2.5 py-0.5 text-[10px] font-bold text-[#094B3D]">
-                      Coming Soon
-                    </span>
-                    <Sparkles className="h-4 w-4 text-[#094B3D]/40" />
-                  </div>
-                  <h4 className="text-base font-bold text-[#0F172A]">
-                    {service.title}
-                    {service.subtitle && (
-                      <span className="block text-xs font-normal text-[#64748B]">{service.subtitle}</span>
-                    )}
-                  </h4>
-                  <p className="mt-2 text-xs leading-relaxed text-[#64748B]">
-                    {service.tagline}
-                  </p>
-                </div>
-              </div>
-            ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+
+            <div className="relative border border-dashed border-[rgba(31,66,52,0.2)] rounded-[8px] p-6 opacity-90">
+              <span className="absolute top-4 right-4 text-[10px] font-bold tracking-[0.1em] uppercase text-[#A8843C] bg-[#EEF1E8] px-2.5 py-1 rounded-full">Soon</span>
+              <svg className="w-7 h-7 text-[#3E5E4F] mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+                <circle cx="12" cy="8" r="3.4" />
+                <path d="M6 20c0-4 2.7-6 6-6s6 2 6 6" />
+              </svg>
+              <h4 className="font-sans font-semibold text-[15px] text-[#1F4234] mb-1.5">Child Care</h4>
+              <p className="text-[12.5px] text-[#3E5E4F] leading-relaxed">Trusted childcare and everyday support for families.</p>
+            </div>
+
+            <div className="relative border border-dashed border-[rgba(31,66,52,0.2)] rounded-[8px] p-6 opacity-90">
+              <span className="absolute top-4 right-4 text-[10px] font-bold tracking-[0.1em] uppercase text-[#A8843C] bg-[#EEF1E8] px-2.5 py-1 rounded-full">Soon</span>
+              <svg className="w-7 h-7 text-[#3E5E4F] mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+                <rect x="6" y="4" width="12" height="16" rx="1.5" />
+                <path d="M9 9h6M9 13h6" />
+              </svg>
+              <h4 className="font-sans font-semibold text-[15px] text-[#1F4234] mb-1.5">Laundry &amp; Assistance</h4>
+              <p className="text-[12.5px] text-[#3E5E4F] leading-relaxed">Laundry, ironing, folding and routine household assistance.</p>
+            </div>
+
+            <div className="relative border border-dashed border-[rgba(31,66,52,0.2)] rounded-[8px] p-6 opacity-90">
+              <span className="absolute top-4 right-4 text-[10px] font-bold tracking-[0.1em] uppercase text-[#A8843C] bg-[#EEF1E8] px-2.5 py-1 rounded-full">Soon</span>
+              <svg className="w-7 h-7 text-[#3E5E4F] mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+                <rect x="4" y="7" width="16" height="12" rx="1.4" />
+                <path d="M9 7V5.5A1.5 1.5 0 0110.5 4h3A1.5 1.5 0 0115 5.5V7" />
+              </svg>
+              <h4 className="font-sans font-semibold text-[15px] text-[#1F4234] mb-1.5">Corporate Support</h4>
+              <p className="text-[12.5px] text-[#3E5E4F] leading-relaxed">Reliable support services for offices and workplaces.</p>
+            </div>
+
+            <div className="relative border border-dashed border-[rgba(31,66,52,0.2)] rounded-[8px] p-6 opacity-90">
+              <span className="absolute top-4 right-4 text-[10px] font-bold tracking-[0.1em] uppercase text-[#A8843C] bg-[#EEF1E8] px-2.5 py-1 rounded-full">Soon</span>
+              <svg className="w-7 h-7 text-[#3E5E4F] mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+                <path d="M4 16l1.5-5A2 2 0 017.4 9.5h9.2a2 2 0 011.9 1.5L20 16" />
+                <rect x="3" y="16" width="18" height="4" rx="1" />
+                <circle cx="8" cy="20" r="1.4" />
+                <circle cx="16" cy="20" r="1.4" />
+              </svg>
+              <h4 className="font-sans font-semibold text-[15px] text-[#1F4234] mb-1.5">Driver / Errand Support</h4>
+              <p className="text-[12.5px] text-[#3E5E4F] leading-relaxed">Driver assistance, local errands, pick-up and drop-off.</p>
+            </div>
+
           </div>
-        </motion.div>
+        </div>
+
       </div>
     </section>
   );
