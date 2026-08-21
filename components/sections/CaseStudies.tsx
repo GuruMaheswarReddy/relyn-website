@@ -80,7 +80,7 @@ export default function AboutRelyn() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="lg:col-span-6 flex flex-col gap-2.5 sm:gap-3 justify-start"
+              className="lg:col-span-6 flex flex-col gap-2.5 sm:gap-3 justify-start pt-4 sm:pt-6 lg:pt-8"
             >
               {/* Card 1: What Relyn is */}
               <div className="bg-[#F8F5EE] rounded-[16px] lg:rounded-[18px] px-3.5 py-3 sm:px-4.5 sm:py-3.5 shadow-2xs border border-[rgba(31,66,52,0.06)] flex items-center gap-3.5 hover:shadow-xs transition-all">
