@@ -123,10 +123,14 @@ export default function RelynDifference() {
             {/* Bottom CTA */}
             <div className="mt-10">
               <a
-                href="/contact"
-                className="inline-flex items-center rounded-full bg-[#021B30] px-7 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#825D34]"
+                href="#contact"
+                className="group relative inline-flex items-center gap-2 rounded-full bg-[#1F4234] hover:bg-[#021B30] px-7 py-3.5 text-sm font-semibold text-white ring-2 ring-[#825D34] shadow-[0_4px_20px_rgba(130,93,52,0.3)] hover:shadow-[0_6px_25px_rgba(130,93,52,0.5)] transition-all duration-300 hover:scale-[1.03]"
               >
-                Book a Service
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#825D34] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#825D34]"></span>
+                </span>
+                <span>Book a Service</span>
               </a>
             </div>
           </motion.div>

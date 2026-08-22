@@ -103,10 +103,14 @@ export function Hero() {
             >
               <Link
                 href="#contact"
-                className="inline-flex items-center justify-center gap-2 bg-[#1F4234] hover:bg-[#122E23] text-[#FAF6EC] px-6 py-3 rounded-full font-semibold text-[13.5px] transition-all duration-200 group shadow-md"
+                className="group relative inline-flex items-center justify-center gap-2.5 bg-[#1F4234] hover:bg-[#021B30] text-[#FAF6EC] px-6.5 py-3.5 rounded-full font-semibold text-[14px] ring-2 ring-[#A8843C] shadow-[0_4px_22px_rgba(168,132,60,0.35)] hover:shadow-[0_8px_30px_rgba(168,132,60,0.55)] hover:scale-[1.03] transition-all duration-300"
               >
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#A8843C] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#A8843C]"></span>
+                </span>
                 <span>Book a Service</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="w-4 h-4 text-[#A8843C] transition-transform group-hover:translate-x-1" />
               </Link>
 
               <Link

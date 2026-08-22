@@ -65,9 +65,14 @@ export function Navbar() {
         <div className="hidden md:block">
           <Link
             href="#contact"
-            className="inline-flex items-center justify-center bg-[#021B30] hover:bg-[#0b2d4b] text-[#FBF9F7] px-6 py-2.5 rounded-full text-[14px] font-semibold shadow-md transition-all duration-200"
+            className="group relative inline-flex items-center justify-center gap-2 bg-[#1F4234] hover:bg-[#021B30] text-[#FAF6EC] px-6 py-2.5 rounded-full text-[14px] font-semibold ring-2 ring-[#A8843C]/80 hover:ring-[#A8843C] shadow-[0_4px_20px_rgba(168,132,60,0.3)] hover:shadow-[0_6px_28px_rgba(168,132,60,0.5)] hover:scale-[1.03] transition-all duration-300"
           >
-            Book a Service
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#A8843C] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#A8843C]"></span>
+            </span>
+            <span>Book a Service</span>
+            <ArrowRight className="w-4 h-4 text-[#A8843C] transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
 
@@ -99,9 +104,14 @@ export function Navbar() {
             <Link
               href="#contact"
               onClick={() => setOpen(false)}
-              className="inline-flex items-center justify-center w-full bg-[#021B30] text-[#FBF9F7] py-3 rounded-full text-sm font-semibold"
+              className="group relative inline-flex items-center justify-center gap-2 w-full bg-[#1F4234] text-[#FAF6EC] py-3 rounded-full text-sm font-semibold ring-2 ring-[#A8843C] shadow-[0_4px_20px_rgba(168,132,60,0.3)]"
             >
-              Book a Service
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#A8843C] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#A8843C]"></span>
+              </span>
+              <span>Book a Service</span>
+              <ArrowRight className="w-4 h-4 text-[#A8843C]" />
             </Link>
           </div>
         </div>
