@@ -1,12 +1,13 @@
-import { Navbar } from "@/components/layout/navbar";
-import { Footer } from "@/components/layout/footer";
-import { Hero } from "@/components/sections/hero";
-import WhyChooseRelyn from "@/components/sections/WhyChooseRelyn";
-import { PhotoReel } from "@/components/sections/PhotoReel";
-import { WhatWeDo } from "@/components/sections/what-we-do";
-import HowItWorks from "@/components/sections/HowItWorks";
-import AboutRelyn from "@/components/sections/CaseStudies";
-import { Contact } from "@/components/sections/Contact";
+import { Navbar, Footer } from "@/components/layout";
+import {
+  Hero,
+  WhyChooseRelyn,
+  PhotoReel,
+  WhatWeDo,
+  HowItWorks,
+  CaseStudies as AboutRelyn,
+  Contact,
+} from "@/components/sections";
 
 export default function Home() {
   return (

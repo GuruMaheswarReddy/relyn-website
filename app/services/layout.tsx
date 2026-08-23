@@ -1,5 +1,4 @@
-import { Footer } from "@/components/layout";
-import { Navbar } from "@/components/layout/navbar";
+import { Navbar, Footer } from "@/components/layout";
 
 export default function ServicesLayout({
   children,

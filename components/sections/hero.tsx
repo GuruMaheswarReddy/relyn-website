@@ -35,11 +35,11 @@ export function Hero() {
             style={{ clipPath: "url(#hero-curvy-frame)" }}
           >
             <Image
-              src="/hero-cleaner-bg.jpg"
-              alt="Relyn housekeeper preparing and cleaning home"
+              src="/hero-indian-housekeeper.jpg"
+              alt="Relyn professional Indian housekeeper cleaning modern home"
               fill
               priority
-              className="object-cover object-[70%_top]"
+              className="object-cover object-[50%_80%]"
             />
             {/* Soft Left Gradient Overlay blending into Ivory background */}
             <div className="absolute inset-y-0 left-0 w-[25%] bg-gradient-to-r from-[#FAF6EC] via-[#FAF6EC]/30 to-transparent pointer-events-none" />
@@ -163,11 +163,11 @@ export function Hero() {
           {/* Mobile/Tablet Fallback Card for Image */}
           <div className="lg:hidden w-full h-[320px] sm:h-[380px] relative rounded-[24px] overflow-hidden shadow-lg border border-[#1F4234]/10">
             <Image
-              src="/hero-cleaner-bg.jpg"
-              alt="Relyn housekeeper preparing and cleaning home"
+              src="/hero-indian-housekeeper.jpg"
+              alt="Relyn professional Indian housekeeper cleaning modern home"
               fill
               priority
-              className="object-cover object-[70%_center]"
+              className="object-cover object-[50%_80%]"
             />
           </div>
 
