@@ -39,55 +39,103 @@ export default function IntroAnimation({ onComplete }: IntroAnimationProps) {
           </button>
 
           <div className="relative flex flex-col items-center justify-center">
-            {/* SVG house outline animation */}
-            <svg
-              viewBox="0 0 200 160"
-              className="w-[120px] h-[100px] overflow-visible"
+            {/* Concept 4 Logo SVG Intro Animation */}
+            <motion.svg
+              viewBox="0 0 200 200"
+              className="w-[180px] h-[180px] mb-6 overflow-visible"
+              initial={{ scale: 0.7, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.7, ease: [0.34, 1.56, 0.64, 1] }}
             >
+              <rect x="4" y="4" width="192" height="192" rx="42" fill="#133a2b" />
+              
+              {/* House outline stroke draw */}
               <motion.path
-                d="M100,22 L168,80 L150,80 L150,142 L50,142 L50,80 L32,80 Z"
+                d="M 46 148 L 46 96 L 100 48 L 154 96 L 154 148"
                 fill="none"
-                stroke="#C6A15B"
-                strokeWidth="2.2"
+                stroke="#faf7f1"
+                strokeWidth="9"
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: 1 }}
-                transition={{ duration: 1.05, ease: "easeInOut" }}
+                transition={{ duration: 0.9, delay: 0.4, ease: "easeInOut" }}
               />
-              <motion.path
-                d="M84,142 L84,104 L116,104 L116,142"
-                fill="none"
-                stroke="#C6A15B"
-                strokeWidth="2.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ duration: 0.8, delay: 0.75, ease: "easeInOut" }}
+
+              {/* 4 Gold Window Panes popping up */}
+              <motion.rect
+                x="80"
+                y="112"
+                width="16"
+                height="16"
+                rx="3"
+                fill="#c08a3e"
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.3, delay: 1.15, ease: [0.34, 1.56, 0.64, 1] }}
               />
-              <motion.path
-                d="M118,132 c8,-4 8,-14 16,-16"
-                fill="none"
-                stroke="#C6A15B"
-                strokeWidth="2.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ duration: 0.6, delay: 0.95, ease: "easeInOut" }}
+              <motion.rect
+                x="104"
+                y="112"
+                width="16"
+                height="16"
+                rx="3"
+                fill="#c08a3e"
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.3, delay: 1.25, ease: [0.34, 1.56, 0.64, 1] }}
               />
-            </svg>
+              <motion.rect
+                x="80"
+                y="136"
+                width="16"
+                height="16"
+                rx="3"
+                fill="#c08a3e"
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.3, delay: 1.35, ease: [0.34, 1.56, 0.64, 1] }}
+              />
+              <motion.rect
+                x="104"
+                y="136"
+                width="16"
+                height="16"
+                rx="3"
+                fill="#c08a3e"
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.3, delay: 1.45, ease: [0.34, 1.56, 0.64, 1] }}
+              />
+            </motion.svg>
 
             {/* RELYN wordmark */}
             <motion.div
-              initial={{ opacity: 0, y: 5 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.25, duration: 0.5 }}
-              className="mt-5 font-serif text-[20px] font-semibold tracking-[0.32em] text-[#FAF6EC]"
+              transition={{ delay: 1.6, duration: 0.6 }}
+              className="font-serif text-[32px] sm:text-[38px] font-bold tracking-[0.25em] text-[#faf7f1]"
             >
               RELYN
             </motion.div>
+
+            {/* Gold rule line */}
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: 60 }}
+              transition={{ delay: 1.85, duration: 0.4 }}
+              className="h-[2.5px] bg-[#c08a3e] my-3 rounded-full"
+            />
+
+            {/* Tagline */}
+            <motion.p
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 2.05, duration: 0.5 }}
+              className="text-[11px] font-bold tracking-[0.25em] uppercase text-[#c08a3e]"
+            >
+              EVERYTHING. TAKEN CARE OF.
+            </motion.p>
           </div>
         </motion.div>
       )}

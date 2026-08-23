@@ -1,11 +1,11 @@
 import type { NavItem } from "@/types";
 
 export const mainNav: NavItem[] = [
-  { label: "Why Relyn", href: "#why" },
+  { label: "Home", href: "#top" },
   { label: "Services", href: "#services" },
-  { label: "How it works", href: "#how" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "How It Works", href: "#how" },
+  { label: "About Us", href: "#about" },
+  { label: "For Professionals", href: "#contact" },
 ];
 
 export const footerNav: NavItem[] = [

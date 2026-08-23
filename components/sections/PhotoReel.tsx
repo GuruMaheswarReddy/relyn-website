@@ -12,56 +12,38 @@ interface Slide {
 
 const slides: Slide[] = [
   {
-    src: "https://images.pexels.com/photos/14769672/pexels-photo-14769672.jpeg?auto=compress&cs=tinysrgb&w=1400",
-    label: "Cooked fresh, your way",
+    src: "/reel/indian-cooking-essentials.jpg",
+    label: "Fresh home-cooked rotis & curries",
     k: "Cooking / Meal Support",
   },
   {
-    src: "https://images.pexels.com/photos/3531700/pexels-photo-3531700.jpeg?auto=compress&cs=tinysrgb&w=1400",
-    label: "Spices, done right",
+    src: "/reel/indian-spices-dabba.jpg",
+    label: "Aromatic Indian spices & masala dabba",
     k: "Cooking / Meal Support",
   },
   {
-    src: "https://images.pexels.com/photos/11347737/pexels-photo-11347737.jpeg?auto=compress&cs=tinysrgb&w=1400",
-    label: "Traditional cooking, honoured",
-    k: "Cooking / Meal Support",
-  },
-  {
-    src: "https://images.pexels.com/photos/14596422/pexels-photo-14596422.jpeg?auto=compress&cs=tinysrgb&w=1400",
-    label: "Cooked with care",
-    k: "Cooking / Meal Support",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1758272422189-b10f36fd4ddd?auto=format&fit=crop&w=1400&q=75",
-    label: "Mopping",
+    src: "/reel/indian-living-room-decor.jpg",
+    label: "Immaculate Indian living room & decor",
     k: "Housekeeping",
   },
   {
-    src: "https://images.unsplash.com/photo-1758273238415-01ec03d9ef27?auto=format&fit=crop&w=1400&q=75",
-    label: "A brighter living room",
+    src: "/reel/indian-housekeeping-care.jpg",
+    label: "Thoughtful housekeeping & care",
     k: "Housekeeping",
   },
   {
-    src: "https://images.pexels.com/photos/7262356/pexels-photo-7262356.jpeg?auto=compress&cs=tinysrgb&w=1400",
-    label: "Washing up, done right",
-    k: "Housekeeping",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1691496550053-80260c93db8f?auto=format&fit=crop&w=1400&q=75",
-    label: "Bathrooms, spotless",
-    k: "Housekeeping",
-  },
-  {
-    src: "https://images.pexels.com/photos/2703082/pexels-photo-2703082.jpeg?auto=compress&cs=tinysrgb&w=1400",
-    label: "Companionship that shows up",
+    src: "/reel/indian-elder-care.jpg",
+    label: "Compassionate elder care & companionship",
     k: "Elder Care",
   },
   {
-    src: "https://images.pexels.com/photos/9366098/pexels-photo-9366098.jpeg?auto=compress&cs=tinysrgb&w=1400",
-    label: "Patient, gentle assistance",
-    k: "Elder Care",
+    src: "/reel/indian-kitchen-counter.jpg",
+    label: "Spotless countertops & daily upkeep",
+    k: "Housekeeping",
   },
 ];
+
+
 
 export function PhotoReel() {
   const [current, setCurrent] = useState(0);
@@ -216,7 +198,7 @@ export function PhotoReel() {
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={slide.src.replace("w=1400", "w=300")}
+                    src={slide.src}
                     alt={slide.label}
                   />
                 </div>

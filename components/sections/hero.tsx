@@ -27,7 +27,7 @@ export function Hero() {
       </svg>
 
       <section className="relative overflow-hidden bg-[#FAF6EC] pt-6 lg:pt-8 pb-4 flex flex-col justify-between min-h-[calc(100vh-75px)]">
-        
+
         {/* Right Background Image spanning all the way to the RIGHT EDGE (right-0) */}
         <div className="absolute top-0 right-0 bottom-[120px] lg:bottom-[95px] w-full lg:w-[50vw] z-0 pointer-events-none hidden lg:block overflow-hidden">
           <div
@@ -48,7 +48,7 @@ export function Hero() {
 
         {/* Hero Left Content Container */}
         <div className="max-w-[1280px] mx-auto px-6 md:px-10 relative z-10 w-full flex-1 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center pt-2 pb-4">
-          
+
           {/* Left Text Block */}
           <div className="lg:col-span-6 max-w-[560px]">
             {/* Top Label */}
@@ -182,7 +182,7 @@ export function Hero() {
             className="bg-white rounded-[24px] lg:rounded-[30px] p-4 sm:p-5 lg:p-6 shadow-xl shadow-[#1F4234]/5 border border-[rgba(31,66,52,0.1)]"
           >
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-3 divide-y sm:divide-y-0 sm:divide-x divide-[rgba(31,66,52,0.08)]">
-              
+
               {/* Feature 1 */}
               <div className="flex flex-col items-center text-center p-1.5">
                 <div className="w-10 h-10 rounded-full bg-[#EEF1E8] flex items-center justify-center text-[#1F4234] mb-2 shadow-xs">

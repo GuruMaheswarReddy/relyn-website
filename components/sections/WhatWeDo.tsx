@@ -61,11 +61,11 @@ export function WhatWeDo() {
               {/* Middle Image */}
               <div className="relative w-full h-[180px] sm:h-[195px] rounded-[14px] overflow-hidden mb-3.5">
                 <Image
-                  src="/services/HouseKeeping.jpg"
+                  src="/services/indian-housekeeping.jpg"
                   alt="Housekeeping service professional"
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover object-[50%_10%] transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
 
@@ -138,11 +138,11 @@ export function WhatWeDo() {
               {/* Middle Image */}
               <div className="relative w-full h-[180px] sm:h-[195px] rounded-[14px] overflow-hidden mb-3.5">
                 <Image
-                  src="/services/Cooking.jpg"
+                  src="/services/indian-cooking.jpg"
                   alt="Cooking and meal support professional"
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover object-[50%_10%] transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
 
@@ -214,11 +214,11 @@ export function WhatWeDo() {
               {/* Middle Image */}
               <div className="relative w-full h-[180px] sm:h-[195px] rounded-[14px] overflow-hidden mb-3.5">
                 <Image
-                  src="/services/Elder_care.jpg"
+                  src="/services/indian-elder-care.jpg"
                   alt="Elder care service caregiver"
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover object-[50%_10%] transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
 
